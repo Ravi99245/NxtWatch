@@ -7,15 +7,23 @@ import {
   MainContainer,
   LoginFormContainer,
   WebsiteLogoUrl,
+  LabelElement,
+  InputContainer,
+  InputElement,
+  Form,
+  CheckBoxElement,
+  CheckboxLabel,
+  CheckboxContainer,
 } from './styledComponent'
 
 class LoginForm extends Component {
   state = {
     username: '',
     password: '',
+    passwordType: 'password',
     showSubmitError: false,
     errorMsg: '',
-    isLightModeOn: true,
+    isLightModeOn: false,
   }
 
   onChangeUsername = event => {
@@ -29,40 +37,72 @@ class LoginForm extends Component {
   renderUsernameField = () => {
     const {username} = this.state
     return (
-      <>
-        <label className="input-label" htmlFor="username">
-          USERNAME
-        </label>
-        <input
-          type="text"
-          id="username"
-          className="username-input-field"
-          value={username}
-          onChange={this.onChangeUsername}
-          placeholder="Username"
-        />
-      </>
+      <WatchContext.Consumer>
+        {value => {
+          const {isLightModeOn} = value
+          return (
+            <InputContainer>
+              <LabelElement isLightModeOn={isLightModeOn} htmlFor="username">
+                USERNAME
+              </LabelElement>
+              <InputElement
+                type="text"
+                id="username"
+                className="username-input-field"
+                value={username}
+                onChange={this.onChangeUsername}
+                placeholder="Username"
+              />
+            </InputContainer>
+          )
+        }}
+      </WatchContext.Consumer>
     )
   }
 
   renderPasswordField = () => {
     const {password} = this.state
     return (
-      <>
-        <label className="input-label" htmlFor="password">
-          PASSWORD
-        </label>
-        <input
-          type="password"
-          id="password"
-          className="password-input-field"
-          value={password}
-          onChange={this.onChangePassword}
-          placeholder="Password"
-        />
-      </>
+      <WatchContext.Consumer>
+        {value => {
+          const {isLightModeOn} = value
+          return (
+            <InputContainer>
+              <LabelElement isLightModeOn={isLightModeOn} htmlFor="password">
+                PASSWORD
+              </LabelElement>
+              <InputElement
+                type="password"
+                id="password"
+                className="password-input-field"
+                value={password}
+                onChange={this.onChangePassword}
+                placeholder="Password"
+              />
+            </InputContainer>
+          )
+        }}
+      </WatchContext.Consumer>
     )
   }
+
+  renderCheckboxField = () => (
+    <WatchContext.Consumer>
+      {value => {
+        const {isLightModeOn} = value
+        return (
+          <CheckboxContainer>
+            <CheckBoxElement
+              isLightModeOn={isLightModeOn}
+              type="checkbox"
+              id="checkbox"
+            />
+            <CheckboxLabel htmlFor="checkbox">Show Password</CheckboxLabel>
+          </CheckboxContainer>
+        )
+      }}
+    </WatchContext.Consumer>
+  )
 
   render() {
     return (
@@ -74,16 +114,13 @@ class LoginForm extends Component {
             : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
           return (
             <MainContainer isLightModeOn={isLightModeOn}>
-              <LoginFormContainer>
+              <LoginFormContainer isLightModeOn={isLightModeOn}>
                 <WebsiteLogoUrl src={imageUrl} alt="website logo" />
-                <form onSubmit={this.onSubmit}>
-                  <div className="input-container">
-                    {this.renderUsernameField()}
-                  </div>
-                  <div className="input-container">
-                    {this.renderPasswordField()}
-                  </div>
-                </form>
+                <Form onSubmit={this.onSubmit}>
+                  {this.renderUsernameField()}
+                  {this.renderPasswordField()}
+                  {this.renderCheckboxField()}
+                </Form>
               </LoginFormContainer>
             </MainContainer>
           )
