@@ -1,4 +1,13 @@
 import styled from 'styled-components'
+import {FaFire} from 'react-icons/fa'
+import {MdHome, MdPlaylistAdd} from 'react-icons/md'
+import {SiYoutubegaming} from 'react-icons/si'
+import {Link} from 'react-router-dom'
+
+export const LinkElement = styled(Link)`
+  text-decoration: none;
+  color: #181818;
+`
 
 export const NavBar = styled.nav`
   width: 100%;
@@ -69,8 +78,10 @@ export const PopupButton = styled.button`
 
 export const PopupContainer = styled.div`
   min-height: 50vh;
-  width: 65vw;
+  width: 75vw;
   padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 `
 
 export const MobileLogoutButton = styled.button`
@@ -90,4 +101,36 @@ export const FiltersContainer = styled.div`
 export const FiltersList = styled.ul`
   list-style-type: none;
   padding-left: 0px;
+  width: 100%;
+`
+
+export const ListItem = styled.li`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: ${props => (props.isActive ? '#f1f5f9' : '#ffffff')};
+  width: 100%;
+  font-size: 18px;
+  font-weight: ${props => (props.isActive ? 'bold' : 200)};
+  padding: 5px;
+`
+export const StyledHomeIcon = styled(MdHome)`
+  color: ${props => (props.active === 'true' ? '#ff0000' : '')};
+`
+
+export const StyledFireIcon = styled(FaFire)`
+  color: ${props => (props.active === 'true' ? '#ff0000' : '')};
+`
+export const StyledGamingIcon = styled(SiYoutubegaming)`
+  color: ${props => (props.active === 'true' ? '#ff0000' : '')};
+`
+export const StyledSavedIcon = styled(MdPlaylistAdd)`
+  color: ${props => (props.active === 'true' ? '#ff0000' : '')};
+`
+
+export const FilterItem = styled.p`
+  font-size: 20px;
+  margin-left: 12px;
+  font-family: 'Roboto';
+  font-weight: 500;
 `
