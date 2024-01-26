@@ -5,6 +5,8 @@ import {Link, Redirect} from 'react-router-dom'
 import Header from '../Header'
 import Sidebar from '../Sidebar/index'
 import Banner from '../Banner/index'
+import AllVideosSection from '../AllVideosSection/index'
+import WatchContext from '../../context/WatchContext'
 
 import {HomeContainer, HomeContent, VideoContainer} from './styledComponent'
 
@@ -13,15 +15,23 @@ class Home extends Component {
 
   render() {
     return (
-      <HomeContainer data-testid="home">
-        <Header />
-        <HomeContent>
-          <Sidebar />
-          <VideoContainer>
-            <Banner />
-          </VideoContainer>
-        </HomeContent>
-      </HomeContainer>
+      <WatchContext.Consumer>
+        {value => {
+          const {isLightModeOn} = value
+          return (
+            <HomeContainer data-testid="home" isLightModeOn={isLightModeOn}>
+              <Header />
+              <HomeContent>
+                <Sidebar />
+                <VideoContainer>
+                  <Banner />
+                  <AllVideosSection />
+                </VideoContainer>
+              </HomeContent>
+            </HomeContainer>
+          )
+        }}
+      </WatchContext.Consumer>
     )
   }
 }

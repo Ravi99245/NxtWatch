@@ -3,7 +3,7 @@ import {Link, withRouter, Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import Popup from 'reactjs-popup'
 
-import {MdBrightness4, MdWbSunny, MdMenu} from 'react-icons/md'
+import {MdBrightness4, MdMenu} from 'react-icons/md'
 import {FiLogOut} from 'react-icons/fi'
 
 import WatchContext from '../../context/WatchContext'
@@ -26,6 +26,7 @@ import {
   StyledGamingIcon,
   StyledSavedIcon,
   LinkElement,
+  LightModeIcon,
 } from './styledComponent'
 
 class Header extends Component {
@@ -98,7 +99,7 @@ class Header extends Component {
                     isLightModeOn={isLightModeOn}
                     onClick={changeBackGroundTheme}
                   >
-                    <MdWbSunny size={30} />
+                    <LightModeIcon />
                   </ThemeButton>
                 )}
                 <Profile

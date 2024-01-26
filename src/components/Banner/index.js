@@ -1,5 +1,4 @@
 import {Component} from 'react'
-import {MdClose} from 'react-icons/md'
 
 import WatchContext from '../../context/WatchContext'
 import {
@@ -9,6 +8,7 @@ import {
   GetButton,
   PremiumContent,
   CloseButton,
+  CloseIcon,
 } from './styledComponent'
 
 class Banner extends Component {
@@ -49,7 +49,7 @@ class Banner extends Component {
                 data-testid="close"
                 onClick={this.closeBannerCard}
               >
-                <MdClose size={30} />
+                <CloseIcon />
               </CloseButton>
             </BannerContainer>
           )

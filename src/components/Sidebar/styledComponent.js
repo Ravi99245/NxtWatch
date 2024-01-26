@@ -6,7 +6,7 @@ import {SiYoutubegaming} from 'react-icons/si'
 
 export const SideBarContainer = styled.div`
   width: 25%;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

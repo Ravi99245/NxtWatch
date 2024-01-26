@@ -3,10 +3,14 @@ import styled from 'styled-components'
 export const HomeContainer = styled.div`
   width: 100vw;
   min-height: 100vh;
+  background-color: ${props => (props.isLightModeOn ? '#f9f9f9' : '#181818')};
 `
 export const HomeContent = styled.div`
   display: flex;
   width: 100%;
+  @media screen and (max-width: 768px) {
+    width: 100vw;
+  }
 `
 
 export const UnorderedList = styled.ul`
@@ -17,4 +21,11 @@ export const UnorderedList = styled.ul`
 export const VideoContainer = styled.div`
   display: flex;
   width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  @media screen and (max-width: 768px) {
+    padding: 15px;
+    padding-top: 5px;
+  }
 `

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import {FaFire} from 'react-icons/fa'
-import {MdHome, MdPlaylistAdd} from 'react-icons/md'
+import {MdHome, MdPlaylistAdd, MdWbSunny} from 'react-icons/md'
 import {SiYoutubegaming} from 'react-icons/si'
 import {Link} from 'react-router-dom'
 
@@ -19,6 +19,9 @@ export const NavBar = styled.nav`
   font-family: 'Roboto';
   color: ${props => (props.isLightModeOn ? '#181818' : '#f9f9f9')};
   min-height: 10vh;
+  @media screen and (max-width: 768px) {
+    padding: 10px;
+  }
 `
 
 export const NxtWatchLogo = styled.img`
@@ -59,7 +62,7 @@ export const NavElements = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 25%;
   @media screen and (max-width: 768px) {
     width: 70%;
@@ -126,6 +129,11 @@ export const StyledGamingIcon = styled(SiYoutubegaming)`
 `
 export const StyledSavedIcon = styled(MdPlaylistAdd)`
   color: ${props => (props.active === 'true' ? '#ff0000' : '')};
+`
+
+export const LightModeIcon = styled(MdWbSunny)`
+  color: #ffffff;
+  font-size: 30px;
 `
 
 export const FilterItem = styled.p`
