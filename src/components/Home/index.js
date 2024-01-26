@@ -4,8 +4,9 @@ import {Link, Redirect} from 'react-router-dom'
 
 import Header from '../Header'
 import Sidebar from '../Sidebar/index'
+import Banner from '../Banner/index'
 
-import {HomeContainer} from './styledComponent'
+import {HomeContainer, HomeContent, VideoContainer} from './styledComponent'
 
 class Home extends Component {
   state = {}
@@ -14,9 +15,12 @@ class Home extends Component {
     return (
       <HomeContainer data-testid="home">
         <Header />
-        <div>
+        <HomeContent>
           <Sidebar />
-        </div>
+          <VideoContainer>
+            <Banner />
+          </VideoContainer>
+        </HomeContent>
       </HomeContainer>
     )
   }

@@ -6,11 +6,14 @@ import {SiYoutubegaming} from 'react-icons/si'
 
 export const SideBarContainer = styled.div`
   width: 25%;
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `
 export const LinkItem = styled(Link)`
   text-decoration: none;
@@ -47,7 +50,7 @@ export const ListItem = styled.li`
 
 export const StyledHomeIcon = styled(MdHome)`
   color: ${props => {
-    if (props.isLightModeOn) {
+    if (props.islightmodeon === 'true') {
       return props.active === 'true' ? '#ff0000' : ''
     }
     return props.active === 'true' ? '#ff0000' : '#cccccc'
@@ -56,7 +59,7 @@ export const StyledHomeIcon = styled(MdHome)`
 
 export const StyledFireIcon = styled(FaFire)`
   color: ${props => {
-    if (props.isLightModeOn) {
+    if (props.islightmodeon === 'true') {
       return props.active === 'true' ? '#ff0000' : ''
     }
     return props.active === 'true' ? '#ff0000' : '#cccccc'
@@ -64,7 +67,7 @@ export const StyledFireIcon = styled(FaFire)`
 `
 export const StyledGamingIcon = styled(SiYoutubegaming)`
   color: ${props => {
-    if (props.isLightModeOn) {
+    if (props.islightmodeon === 'true') {
       return props.active === 'true' ? '#ff0000' : ''
     }
     return props.active === 'true' ? '#ff0000' : '#cccccc'
@@ -72,7 +75,7 @@ export const StyledGamingIcon = styled(SiYoutubegaming)`
 `
 export const StyledSavedIcon = styled(MdPlaylistAdd)`
   color: ${props => {
-    if (props.isLightModeOn) {
+    if (props.islightmodeon === 'true') {
       return props.active === 'true' ? '#ff0000' : ''
     }
     return props.active === 'true' ? '#ff0000' : '#cccccc'
@@ -87,10 +90,22 @@ export const FilterItem = styled.p`
 `
 
 export const SocialLogo = styled.img`
-  width: 35px;
+  width: 40px;
   margin-right: 15px;
 `
 
 export const ContactUs = styled.h1`
   font-size: 18px;
+  font-weight: bold;
+  font-family: 'Roboto';
+`
+export const ContactDetailsContainer = styled.div`
+  padding: 10px;
+  color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
+`
+export const Description = styled.p`
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Roboto';
+  line-height: 1.5;
 `

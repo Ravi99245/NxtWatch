@@ -1,5 +1,4 @@
 import {Component} from 'react'
-import {Link} from 'react-router-dom'
 
 import WatchContext from '../../context/WatchContext'
 
@@ -15,6 +14,8 @@ import {
   UnorderedList,
   SocialLogo,
   ContactUs,
+  ContactDetailsContainer,
+  Description,
 } from './styledComponent'
 
 class Sidebar extends Component {
@@ -53,7 +54,7 @@ class Sidebar extends Component {
                   >
                     <StyledHomeIcon
                       size={25}
-                      isLightModeOn={isLightModeOn}
+                      islightmodeon={isLightModeOn ? 'true' : 'false'}
                       active={activeFilter === 'home' ? 'true' : 'false'}
                     />
                     <FilterItem>Home</FilterItem>
@@ -67,7 +68,7 @@ class Sidebar extends Component {
                   >
                     <StyledFireIcon
                       size={25}
-                      isLightModeOn={isLightModeOn}
+                      islightmodeon={isLightModeOn ? 'true' : 'false'}
                       active={activeFilter === 'trending' ? 'true' : 'false'}
                     />
                     <FilterItem>Trending</FilterItem>
@@ -81,7 +82,7 @@ class Sidebar extends Component {
                   >
                     <StyledGamingIcon
                       size={25}
-                      isLightModeOn={isLightModeOn}
+                      islightmodeon={isLightModeOn ? 'true' : 'false'}
                       active={activeFilter === 'gaming' ? 'true' : 'false'}
                     />
                     <FilterItem>Gaming</FilterItem>
@@ -95,14 +96,14 @@ class Sidebar extends Component {
                   >
                     <StyledSavedIcon
                       size={25}
-                      isLightModeOn={isLightModeOn}
+                      islightmodeon={isLightModeOn ? 'true' : 'false'}
                       active={activeFilter === 'saved' ? 'true' : 'false'}
                     />
                     <FilterItem>Gaming</FilterItem>
                   </ListItem>
                 </LinkItem>
               </UnorderedList>
-              <div>
+              <ContactDetailsContainer isLightModeOn={isLightModeOn}>
                 <ContactUs>CONTACT US</ContactUs>
                 <div>
                   <SocialLogo
@@ -118,8 +119,10 @@ class Sidebar extends Component {
                     alt="linked in logo"
                   />
                 </div>
-                <p>Enjoy! Now to see your channels and recommendations</p>
-              </div>
+                <Description>
+                  Enjoy! Now to see your channels and recommendations!
+                </Description>
+              </ContactDetailsContainer>
             </SideBarContainer>
           )
         }}
