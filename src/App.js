@@ -3,12 +3,13 @@ import {Route, Switch} from 'react-router-dom'
 
 import LoginForm from './components/LoginForm'
 import Home from './components/Home'
+import TrendingPage from './components/TrendingPage/index'
 import WatchContext from './context/WatchContext'
 
 import './App.css'
 
 class App extends Component {
-  state = {isLightModeOn: true}
+  state = {isLightModeOn: true, currentPage: 'home'}
 
   changeTheme = () => {
     this.setState(prevState => ({
@@ -16,15 +17,25 @@ class App extends Component {
     }))
   }
 
+  changePage = pageName => {
+    this.setState({currentPage: pageName})
+  }
+
   render() {
-    const {isLightModeOn} = this.state
+    const {isLightModeOn, currentPage} = this.state
     return (
       <WatchContext.Provider
-        value={{isLightModeOn, changeTheme: this.changeTheme}}
+        value={{
+          isLightModeOn,
+          changeTheme: this.changeTheme,
+          currentPage,
+          changePage: this.changePage,
+        }}
       >
         <Switch>
           <Route exact path="/login" component={LoginForm} />
           <Route exact path="/" component={Home} />
+          <Route exact path="/trending" component={TrendingPage} />
         </Switch>
       </WatchContext.Provider>
     )

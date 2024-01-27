@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+import {formatDistanceToNow} from 'date-fns'
 
 import WatchContext from '../../context/WatchContext'
 import {
@@ -29,6 +30,7 @@ const VideoCard = props => {
     <WatchContext.Consumer>
       {value => {
         const {isLightModeOn} = value
+        const timeDuration = formatDistanceToNow(new Date(publishedAt))
         return (
           <LinkItem to={`/videos/${id}`}>
             <VideoItem isLightModeOn={isLightModeOn}>
@@ -42,7 +44,7 @@ const VideoCard = props => {
                     <div>
                       <ViewsCount>
                         {viewCount} <MiddleDot>&middot;</MiddleDot>{' '}
-                        {publishedAt}
+                        {timeDuration}
                       </ViewsCount>
                     </div>
                   </VideoDescription>

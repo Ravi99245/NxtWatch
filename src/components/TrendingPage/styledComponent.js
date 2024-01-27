@@ -1,23 +1,20 @@
 import styled from 'styled-components'
 
-export const HomeContainer = styled.div`
+export const TrendingContainer = styled.div`
   width: 100vw;
   min-height: 100vh;
-  background-color: ${props => (props.isLightModeOn ? '#f9f9f9' : '#181818')};
+  background-color: ${props => (props.isLightModeOn ? '#f9f9f9' : '#0f0f0f')};
+  color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
 `
-export const HomeContent = styled.div`
+
+export const Heading = styled.h1`
+  font-family: 'Roboto';
+`
+export const TrendingContent = styled.div`
   display: flex;
   width: 100%;
-  @media screen and (max-width: 768px) {
-    width: 100vw;
-  }
+  height: 100%;
 `
-
-export const UnorderedList = styled.ul`
-  list-style-type: none;
-  padding-left: 0px;
-`
-
 export const VideoContainer = styled.div`
   display: flex;
   width: 75%;

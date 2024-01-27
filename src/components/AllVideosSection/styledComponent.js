@@ -14,6 +14,7 @@ export const AllVideosContainer = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   @media screen and (max-width: 768px) {
+    width: 100%;
     padding: 8px;
     padding-left: 10px;
   }
@@ -26,8 +27,12 @@ export const SearchInputContainer = styled.div`
   align-items: center;
   margin-top: 15px;
   width: 50%;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 576px) {
     width: 90%;
+    padding-left: 0px;
+  }
+  @media screen and (min-width: 576px) and (max-width: 768px) {
+    width: 70%;
     padding-left: 0px;
   }
 `
@@ -82,4 +87,23 @@ export const VideosList = styled.ul`
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
+  @media screen and(max-width:576px) {
+    flex-direction: column;
+    align-items: center;
+  }
+  @media screen and (min-width: 576px) and (max-width: 768px) {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+`
+
+export const LoaderContainer = styled.div`
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `

@@ -14,6 +14,7 @@ import {
   VideosSection,
   VideosContainer,
   VideosList,
+  LoaderContainer,
 } from './styledComponent'
 
 const apiStatusText = {
@@ -80,7 +81,10 @@ class AllVideosSection extends Component {
   updateUrl = () => {
     const {searchInput} = this.state
     this.setState(
-      {url: `https://apis.ccbp.in/videos/all?search=${searchInput}`},
+      {
+        url: `https://apis.ccbp.in/videos/all?search=${searchInput}`,
+        apiStatus: apiStatusText.inProgress,
+      },
       this.getVideosList,
     )
   }
@@ -134,9 +138,9 @@ class AllVideosSection extends Component {
   }
 
   renderLoadingView = () => (
-    <div className="loader-container" data-testid="loader">
-      <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
-    </div>
+    <LoaderContainer className="loader-container" data-testid="loader">
+      <Loader type="Watch" color="#475569" height="50" width="50" />
+    </LoaderContainer>
   )
 
   renderAllVideos = () => {

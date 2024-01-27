@@ -15,10 +15,16 @@ export const VideoItem = styled.li`
   width: 300px;
   min-height: 330px;
   font-family: 'Roboto';
+  @media screen and (max-width: 576px) {
+    width: 100%;
+  }
 `
 
 export const ThumbnailImage = styled.img`
   width: 300px;
+  @media screen and (max-width: 576px) {
+    width: 100%;
+  }
 `
 export const ChannelLogo = styled.img`
   width: 50px;

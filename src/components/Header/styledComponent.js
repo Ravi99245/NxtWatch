@@ -65,7 +65,7 @@ export const NavElements = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 25%;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 576px) {
     width: 70%;
   }
 `
@@ -76,7 +76,7 @@ export const PopupButton = styled.button`
   cursor: pointer;
   outline: none;
   color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 769px) {
     display: none;
   }
 `
@@ -95,7 +95,7 @@ export const MobileLogoutButton = styled.button`
   cursor: pointer;
   outline: none;
   color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 769px) {
     display: none;
   }
 `

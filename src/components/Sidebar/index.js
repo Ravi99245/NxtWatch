@@ -19,87 +19,84 @@ import {
 } from './styledComponent'
 
 class Sidebar extends Component {
-  state = {activeFilter: 'home'}
-
-  UpdateActivePageToHome = () => {
-    this.setState({activeFilter: 'home'})
-  }
-
-  UpdateActivePageToTrend = () => {
-    this.setState({activeFilter: 'trending'})
-  }
-
-  UpdateActivePageToGaming = () => {
-    this.setState({activeFilter: 'gaming'})
-  }
-
-  UpdateActivePageToSaved = () => {
-    this.setState({activeFilter: 'saved'})
-  }
+  state = {}
 
   render() {
-    const {activeFilter} = this.state
     return (
       <WatchContext.Consumer>
         {value => {
-          const {isLightModeOn} = value
+          const {isLightModeOn, currentPage, changePage} = value
+          console.log(currentPage)
+          const updateContextPageToHome = () => {
+            changePage('home')
+          }
+          const updateContextPageToTrend = () => {
+            console.log('clicked')
+            changePage('trending')
+          }
+          const updateContextPageToGame = () => {
+            changePage('gaming')
+          }
+          const updateContextPageToSave = () => {
+            changePage('saved')
+          }
           return (
             <SideBarContainer isLightModeOn={isLightModeOn}>
               <UnorderedList isLightModeOn={isLightModeOn}>
                 <LinkItem to="/">
                   <ListItem
                     isLightModeOn={isLightModeOn}
-                    isActive={activeFilter === 'home'}
-                    onClick={this.UpdateActivePageToHome}
+                    isActive={currentPage === 'home'}
+                    onClick={updateContextPageToHome}
                   >
                     <StyledHomeIcon
                       size={22}
                       islightmodeon={isLightModeOn ? 'true' : 'false'}
-                      active={activeFilter === 'home' ? 'true' : 'false'}
+                      active={currentPage === 'home' ? 'true' : 'false'}
                     />
                     <FilterItem>Home</FilterItem>
                   </ListItem>
                 </LinkItem>
-                <LinkItem to="/">
+                <LinkItem to="/trending">
                   <ListItem
-                    isActive={activeFilter === 'trending'}
+                    isActive={currentPage === 'trending'}
                     isLightModeOn={isLightModeOn}
-                    onClick={this.UpdateActivePageToTrend}
+                    onClick={updateContextPageToTrend}
                   >
                     <StyledFireIcon
                       size={22}
                       islightmodeon={isLightModeOn ? 'true' : 'false'}
-                      active={activeFilter === 'trending' ? 'true' : 'false'}
+                      active={currentPage === 'trending' ? 'true' : 'false'}
                     />
                     <FilterItem>Trending</FilterItem>
                   </ListItem>
                 </LinkItem>
-                <LinkItem to="/">
+                <LinkItem to="/gaming">
                   <ListItem
-                    isActive={activeFilter === 'gaming'}
+                    isActive={currentPage === 'gaming'}
                     isLightModeOn={isLightModeOn}
-                    onClick={this.UpdateActivePageToGaming}
+                    onClick={updateContextPageToGame}
                   >
                     <StyledGamingIcon
                       size={22}
                       islightmodeon={isLightModeOn ? 'true' : 'false'}
-                      active={activeFilter === 'gaming' ? 'true' : 'false'}
+                      active={currentPage === 'gaming' ? 'true' : 'false'}
                     />
                     <FilterItem>Gaming</FilterItem>
                   </ListItem>
                 </LinkItem>
-                <LinkItem to="/">
+                <LinkItem to="/saved-videos">
                   <ListItem
-                    isActive={activeFilter === 'saved'}
+                    isActive={currentPage === 'saved'}
                     isLightModeOn={isLightModeOn}
-                    onClick={this.UpdateActivePageToSaved}
+                    onClick={updateContextPageToSave}
                   >
                     <StyledSavedIcon
                       size={22}
                       islightmodeon={isLightModeOn ? 'true' : 'false'}
-                      active={activeFilter === 'saved' ? 'true' : 'false'}
+                      active={currentPage === 'saved' ? 'true' : 'false'}
                     />
-                    <FilterItem>Gaming</FilterItem>
+                    <FilterItem>Saved videos</FilterItem>
                   </ListItem>
                 </LinkItem>
               </UnorderedList>
