@@ -1,7 +1,9 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import Loader from 'react-loader-spinner'
 
 import WatchContext from '../../context/WatchContext'
+import VideoCard from '../VideoCard/index'
 
 import {
   AllVideosContainer,
@@ -9,6 +11,9 @@ import {
   SearchElement,
   SearchButton,
   SearchIcon,
+  VideosSection,
+  VideosContainer,
+  VideosList,
 } from './styledComponent'
 
 const apiStatusText = {
@@ -24,6 +29,7 @@ class AllVideosSection extends Component {
     videosList: [],
     searchInput: '',
     total: '',
+    url: 'https://apis.ccbp.in/videos/all?search=',
   }
 
   componentDidMount() {
@@ -32,9 +38,10 @@ class AllVideosSection extends Component {
   }
 
   getVideosList = async () => {
-    const {searchInput} = this.state
+    const {searchInput, url} = this.state
+    console.log(searchInput)
     const jwtToken = Cookies.get('jwt_token')
-    const url = `https://apis.ccbp.in/videos/all?search=${searchInput}`
+    console.log(url)
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -70,6 +77,14 @@ class AllVideosSection extends Component {
     this.setState({searchInput: event.target.value})
   }
 
+  updateUrl = () => {
+    const {searchInput} = this.state
+    this.setState(
+      {url: `https://apis.ccbp.in/videos/all?search=${searchInput}`},
+      this.getVideosList,
+    )
+  }
+
   renderSearchInput = () => {
     const {searchInput, videosList, total} = this.state
     console.log(videosList)
@@ -85,11 +100,13 @@ class AllVideosSection extends Component {
                 placeholder="Serach"
                 onChange={this.updateSearchInput}
                 isLightModeOn={isLightModeOn}
+                value={searchInput}
               />
               <SearchButton
                 type="button"
                 aria-label="search"
                 isLightModeOn={isLightModeOn}
+                onClick={this.updateUrl}
               >
                 <SearchIcon light={isLightModeOn ? 'true' : 'false'} />
               </SearchButton>
@@ -100,6 +117,43 @@ class AllVideosSection extends Component {
     )
   }
 
+  renderVideosView = () => {
+    const {total, videosList} = this.state
+
+    return total > 0 ? (
+      <VideosContainer>
+        <VideosList>
+          {videosList.map(eachItem => (
+            <VideoCard key={eachItem.id} card={eachItem} />
+          ))}
+        </VideosList>
+      </VideosContainer>
+    ) : (
+      <div>Novideos</div>
+    )
+  }
+
+  renderLoadingView = () => (
+    <div className="loader-container" data-testid="loader">
+      <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
+    </div>
+  )
+
+  renderAllVideos = () => {
+    const {apiStatus} = this.state
+
+    switch (apiStatus) {
+      case apiStatusText.success:
+        return this.renderVideosView()
+      case apiStatusText.failure:
+        return this.renderFailureView()
+      case apiStatusText.inProgress:
+        return this.renderLoadingView()
+      default:
+        return null
+    }
+  }
+
   render() {
     return (
       <WatchContext.Consumer>
@@ -108,6 +162,7 @@ class AllVideosSection extends Component {
           return (
             <AllVideosContainer isLightModeOn={isLightModeOn}>
               {this.renderSearchInput()}
+              <VideosSection>{this.renderAllVideos()}</VideosSection>
             </AllVideosContainer>
           )
         }}

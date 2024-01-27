@@ -44,8 +44,8 @@ class Sidebar extends Component {
         {value => {
           const {isLightModeOn} = value
           return (
-            <SideBarContainer>
-              <UnorderedList>
+            <SideBarContainer isLightModeOn={isLightModeOn}>
+              <UnorderedList isLightModeOn={isLightModeOn}>
                 <LinkItem to="/">
                   <ListItem
                     isLightModeOn={isLightModeOn}
@@ -53,7 +53,7 @@ class Sidebar extends Component {
                     onClick={this.UpdateActivePageToHome}
                   >
                     <StyledHomeIcon
-                      size={25}
+                      size={22}
                       islightmodeon={isLightModeOn ? 'true' : 'false'}
                       active={activeFilter === 'home' ? 'true' : 'false'}
                     />
@@ -67,7 +67,7 @@ class Sidebar extends Component {
                     onClick={this.UpdateActivePageToTrend}
                   >
                     <StyledFireIcon
-                      size={25}
+                      size={22}
                       islightmodeon={isLightModeOn ? 'true' : 'false'}
                       active={activeFilter === 'trending' ? 'true' : 'false'}
                     />
@@ -81,7 +81,7 @@ class Sidebar extends Component {
                     onClick={this.UpdateActivePageToGaming}
                   >
                     <StyledGamingIcon
-                      size={25}
+                      size={22}
                       islightmodeon={isLightModeOn ? 'true' : 'false'}
                       active={activeFilter === 'gaming' ? 'true' : 'false'}
                     />
@@ -95,7 +95,7 @@ class Sidebar extends Component {
                     onClick={this.UpdateActivePageToSaved}
                   >
                     <StyledSavedIcon
-                      size={25}
+                      size={22}
                       islightmodeon={isLightModeOn ? 'true' : 'false'}
                       active={activeFilter === 'saved' ? 'true' : 'false'}
                     />

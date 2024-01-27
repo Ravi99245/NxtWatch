@@ -20,7 +20,7 @@ export const UnorderedList = styled.ul`
 
 export const VideoContainer = styled.div`
   display: flex;
-  width: 100%;
+  width: 75%;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;

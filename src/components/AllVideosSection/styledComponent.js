@@ -3,12 +3,16 @@ import styled from 'styled-components'
 import {MdSearch} from 'react-icons/md'
 
 export const AllVideosContainer = styled.div`
-  min-height: 80vh;
+  min-height: 90vh;
   padding: 20px;
   padding-top: 10px;
   width: 100%;
   margin-top: 8px;
   background-color: ${props => (props.isLightModeOn ? '#f8fafc' : '#000000')};
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   @media screen and (max-width: 768px) {
     padding: 8px;
     padding-left: 10px;
@@ -57,4 +61,25 @@ export const SearchIcon = styled(MdSearch)`
   font-size: 15px;
   color: ${props => (props.light === 'true' ? '#181818' : '#cccccc')};
   width: 100%;
+`
+
+export const VideosSection = styled.div`
+  width: 100%;
+  min-height: 80vh;
+`
+
+export const VideosContainer = styled.div`
+  width: 100%;
+  flex-wrap: wrap;
+`
+export const VideosList = styled.ul`
+  list-style-type: none;
+  padding: 0px;
+  width: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
 `

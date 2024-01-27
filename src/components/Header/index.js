@@ -108,7 +108,11 @@ class Header extends Component {
                 />
                 <Popup
                   trigger={
-                    <PopupButton type="button" aria-label="popup">
+                    <PopupButton
+                      type="button"
+                      aria-label="popup"
+                      isLightModeOn={isLightModeOn}
+                    >
                       <MdMenu size={30} />
                     </PopupButton>
                   }
@@ -184,6 +188,7 @@ class Header extends Component {
                   type="button"
                   aria-label="logout"
                   onClick={this.onClickLogout}
+                  isLightModeOn={isLightModeOn}
                 >
                   <FiLogOut size={28} />
                 </MobileLogoutButton>

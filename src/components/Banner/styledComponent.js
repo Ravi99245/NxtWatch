@@ -24,7 +24,7 @@ export const BannerContainer = styled.div`
 `
 
 export const Description = styled.p`
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
   width: 50%;
   line-height: 1.5;
@@ -35,7 +35,7 @@ export const Description = styled.p`
   }
 `
 export const NxtWatchLogo = styled.img`
-  width: 150px;
+  width: 130px;
   @media screen and (max-width: 768px) {
     width: 80px;
   }
@@ -47,7 +47,7 @@ export const GetButton = styled.button`
   padding: 7px;
   padding-left: 14px;
   padding-right: 14px;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: bold;
   cursor: pointer;
   outline: none;
@@ -76,7 +76,7 @@ export const CloseButton = styled.button`
 `
 
 export const CloseIcon = styled(MdClose)`
-  font-size: 25px;
+  font-size: 23px;
   font-weight: bold;
   @media screen and (max-width: 768px) {
     font-size: 18px;

@@ -5,12 +5,14 @@ import {MdHome, MdPlaylistAdd} from 'react-icons/md'
 import {SiYoutubegaming} from 'react-icons/si'
 
 export const SideBarContainer = styled.div`
-  width: 25%;
+  width: 20%;
   min-height: 80vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  background-color: ${props => (props.isLightModeOn ? '#f9f9f9' : '#181818')};
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -23,7 +25,7 @@ export const UnorderedList = styled.ul`
   list-style-type: none;
   padding-left: 0px;
   padding: 0px;
-  background-color: transparent;
+  background-color: ${props => (props.isLightModeOn ? '#f9f9f9' : '#181818')};
   width: 100%;
   padding-top: 10px;
 `
@@ -38,9 +40,9 @@ export const ListItem = styled.li`
     }
     return props.isActive ? '#424242' : ''
   }};
-  color: ${props => (props.isLightModeOn ? '#181818' : '#ffffff')};
+  color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
   width: 100%;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: ${props => (props.isActive ? 'bold' : 500)};
   padding: 5px;
   height: 50px;
@@ -83,7 +85,7 @@ export const StyledSavedIcon = styled(MdPlaylistAdd)`
 `
 
 export const FilterItem = styled.p`
-  font-size: 20px;
+  font-size: 16px;
   margin-left: 16px;
   font-family: 'Roboto';
   font-weight: 500;
@@ -95,7 +97,7 @@ export const SocialLogo = styled.img`
 `
 
 export const ContactUs = styled.h1`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   font-family: 'Roboto';
 `
@@ -104,7 +106,7 @@ export const ContactDetailsContainer = styled.div`
   color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
 `
 export const Description = styled.p`
-  font-size: 18px;
+  font-size: 17px;
   font-weight: bold;
   font-family: 'Roboto';
   line-height: 1.5;

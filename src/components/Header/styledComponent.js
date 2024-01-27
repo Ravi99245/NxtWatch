@@ -18,7 +18,7 @@ export const NavBar = styled.nav`
   align-items: center;
   font-family: 'Roboto';
   color: ${props => (props.isLightModeOn ? '#181818' : '#f9f9f9')};
-  min-height: 10vh;
+  height: 10vh;
   @media screen and (max-width: 768px) {
     padding: 10px;
   }
@@ -41,6 +41,7 @@ export const ThemeButton = styled.button`
   cursor: pointer;
   outline: none;
   width: 20%;
+  color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
 `
 export const LogoutButton = styled.button`
   color: ${props => (props.isLightModeOn ? '#3b82f6' : '#ffffff')};
@@ -74,6 +75,7 @@ export const PopupButton = styled.button`
   border: none;
   cursor: pointer;
   outline: none;
+  color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
   @media screen and (min-width: 768px) {
     display: none;
   }
@@ -92,6 +94,7 @@ export const MobileLogoutButton = styled.button`
   border: none;
   cursor: pointer;
   outline: none;
+  color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
   @media screen and (min-width: 768px) {
     display: none;
   }
