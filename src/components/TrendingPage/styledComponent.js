@@ -22,7 +22,6 @@ export const VideoContainer = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   @media screen and (max-width: 768px) {
-    padding: 15px;
     padding-top: 5px;
     width: 100%;
   }

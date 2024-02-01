@@ -8,6 +8,7 @@ export const TrendingContainer = styled.div`
   overflow-y: auto;
   font-family: 'Roboto';
   color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
+  min-height: 80vh;
 `
 
 export const HeadingContainer = styled.div`
@@ -39,10 +40,18 @@ export const LoaderContainer = styled.div`
 
 export const TrendingVideosList = styled.ul`
   list-style-type: none;
-  padding-left: 0px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  margin-left: 30px;
+  @media screen and (max-width: 768px) {
+    margin-left: 0px;
+    padding: 0px;
+  }
+`
+export const TrendingContent = styled.div`
+  width: 100%;
 `

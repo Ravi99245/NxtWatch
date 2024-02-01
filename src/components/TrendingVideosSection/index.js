@@ -13,6 +13,7 @@ import {
   FireIConContainer,
   LoaderContainer,
   TrendingVideosList,
+  TrendingContent,
 } from './styledComponent'
 
 const apiStatusText = {
@@ -75,7 +76,7 @@ class TrendingVideosSection extends Component {
         {value => {
           const {isLightModeOn} = value
           return (
-            <div>
+            <TrendingContent>
               <HeadingContainer isLightModeOn={isLightModeOn}>
                 <FireIConContainer isLightModeOn={isLightModeOn}>
                   <FireIcon size={35} />
@@ -87,7 +88,7 @@ class TrendingVideosSection extends Component {
                   <TrendingVideoCard key={eachItem.id} card={eachItem} />
                 ))}
               </TrendingVideosList>
-            </div>
+            </TrendingContent>
           )
         }}
       </WatchContext.Consumer>

@@ -2,19 +2,23 @@ import {Link} from 'react-router-dom'
 import {formatDistanceToNow} from 'date-fns'
 
 import WatchContext from '../../context/WatchContext'
-import {LinkItem, ListItem, ThumbnailImage, MiddleDot} from './styledComponent'
+import MiddleDot from '../MiddleDot/index'
+import {
+  LinkItem,
+  ListItem,
+  ThumbnailImage,
+  TrendingContent,
+  TrendingDescriptionContainer,
+  TrendingTitle,
+  ThumbnailContainer,
+  Name,
+  ViewCount,
+  dotStyle,
+} from './styledComponent'
 
 const TrendingVideoCard = props => {
   const {card} = props
-  const {
-    name,
-    profileImageUrl,
-    publishedAt,
-    thumbnailUrl,
-    title,
-    viewCount,
-    id,
-  } = card
+  const {name, publishedAt, thumbnailUrl, title, viewCount, id} = card
 
   return (
     <WatchContext.Consumer>
@@ -24,16 +28,18 @@ const TrendingVideoCard = props => {
         return (
           <LinkItem to={`/videos/${id}`} isLightModeOn={isLightModeOn}>
             <ListItem>
-              <div>
-                <ThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
-                <div>
-                  <h1>{title}</h1>
-                  <p>{name}</p>
-                  <p>
-                    {viewCount} <MiddleDot>&middot;</MiddleDot> {timeDuration}
-                  </p>
-                </div>
-              </div>
+              <TrendingContent>
+                <ThumbnailContainer>
+                  <ThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
+                </ThumbnailContainer>
+                <TrendingDescriptionContainer>
+                  <TrendingTitle>{title}</TrendingTitle>
+                  <Name isLightModeOn={isLightModeOn}>{name}</Name>
+                  <ViewCount isLightModeOn={isLightModeOn}>
+                    {viewCount} <MiddleDot /> {timeDuration}
+                  </ViewCount>
+                </TrendingDescriptionContainer>
+              </TrendingContent>
             </ListItem>
           </LinkItem>
         )
@@ -43,3 +49,5 @@ const TrendingVideoCard = props => {
 }
 
 export default TrendingVideoCard
+
+//

@@ -3,23 +3,90 @@ import {Link} from 'react-router-dom'
 
 export const ListItem = styled.li`
   width: 80%;
-  margin: 10px;
-  margin-bottom: 35px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  margin-bottom: 5px;
+  @media screen and (max-width: 576px) {
+    width: 100%;
+  }
+  @media screen and (min-width: 576px) and (max-width: 768px) {
+    width: 100%;
+    margin-left: 15px;
+  }
 `
 
 export const LinkItem = styled(Link)`
   text-decoration: none;
   color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
+  width: 100%;
 `
-export const ThumbnailImage = styled.img`
-  width: 350px;
+export const ThumbnailContainer = styled.div`
+  width: 50%;
   @media screen and (max-width: 576px) {
     width: 100%;
   }
 `
-export const MiddleDot = styled.span`
-  font-size: 1.2em;
+
+export const ThumbnailImage = styled.img`
+  width: 100%;
+  @media screen and (max-width: 576px) {
+    width: 100%;
+  }
+`
+export const TrendingContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 250px;
+  @media screen and (max-width: 576px) {
+    flex-direction: column;
+    width: 100%;
+  }
+`
+export const TrendingDescriptionContainer = styled.div`
+  width: 50%;
+  height: 200px;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  @media screen and (max-width: 576px) {
+    width: 100vw;
+    height: 100px;
+  }
+  @media screen and (min-width: 576px) and (max-width: 768px) {
+    height: 200px;
+  }
+`
+export const TrendingTitle = styled.h1`
+  font-size: 20px;
+  margin: 0px;
+  @media screen and (max-width: 768px) {
+    font-size: 15px;
+  }
+`
+export const Name = styled.p`
+  margin: 0px;
+  line-height: 1.5;
+  font-size: 16px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: ${props => (props.isLightModeOn ? '#475569' : '#ffffff')};
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
+`
+
+export const ViewCount = styled.p`
+  line-height: 1.5;
+  margin-top: 6px;
+  font-size: 16px;
+  color: ${props => (props.isLightModeOn ? '#475569' : '#ffffff')};
+  margin: 0px;
+  @media screen and (max-width: 768px) {
+    margin: 0px;
+  }
 `
