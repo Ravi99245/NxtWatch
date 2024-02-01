@@ -1,4 +1,3 @@
-import {Link} from 'react-router-dom'
 import {formatDistanceToNow} from 'date-fns'
 
 import WatchContext from '../../context/WatchContext'

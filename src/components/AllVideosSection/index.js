@@ -133,7 +133,7 @@ class AllVideosSection extends Component {
         </VideosList>
       </VideosContainer>
     ) : (
-      <div>Novideos</div>
+      <div>No Videos</div>
     )
   }
 
