@@ -13,12 +13,24 @@ import {
   ThumbnailContainer,
   Name,
   ViewCount,
-  dotStyle,
+  ProfileImage,
+  TrendingMobileTitle,
+  TrendingMobileDescription,
+  TrendingDescriptionMobileContainer,
 } from './styledComponent'
 
 const TrendingVideoCard = props => {
   const {card} = props
-  const {name, publishedAt, thumbnailUrl, title, viewCount, id} = card
+  console.log(card)
+  const {
+    name,
+    publishedAt,
+    profileImageUrl,
+    thumbnailUrl,
+    title,
+    viewCount,
+    id,
+  } = card
 
   return (
     <WatchContext.Consumer>
@@ -39,6 +51,16 @@ const TrendingVideoCard = props => {
                     {viewCount} <MiddleDot /> {timeDuration}
                   </ViewCount>
                 </TrendingDescriptionContainer>
+                <TrendingMobileDescription isLightModeOn={isLightModeOn}>
+                  <ProfileImage src={profileImageUrl} alt="channel logo" />
+                  <TrendingDescriptionMobileContainer>
+                    <TrendingMobileTitle>{title}</TrendingMobileTitle>
+                    <p>
+                      {name} <MiddleDot /> {viewCount} <MiddleDot />{' '}
+                      {timeDuration}{' '}
+                    </p>
+                  </TrendingDescriptionMobileContainer>
+                </TrendingMobileDescription>
               </TrendingContent>
             </ListItem>
           </LinkItem>

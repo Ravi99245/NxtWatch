@@ -4,6 +4,7 @@ import Loader from 'react-loader-spinner'
 
 import WatchContext from '../../context/WatchContext'
 import VideoCard from '../VideoCard/index'
+import FailedView from '../FailureView'
 
 import {
   AllVideosContainer,
@@ -141,6 +142,14 @@ class AllVideosSection extends Component {
     <LoaderContainer className="loader-container" data-testid="loader">
       <Loader type="Watch" color="#475569" height="50" width="50" />
     </LoaderContainer>
+  )
+
+  retryEverything = () => {
+    this.setState({apiStatus: apiStatusText.inProgress}, this.getVideosList)
+  }
+
+  renderFailureView = () => (
+    <FailedView retryEverything={this.retryEverything} />
   )
 
   renderAllVideos = () => {

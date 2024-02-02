@@ -52,11 +52,7 @@ export const TrendingDescriptionContainer = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   @media screen and (max-width: 576px) {
-    width: 100vw;
-    height: 100px;
-  }
-  @media screen and (min-width: 576px) and (max-width: 768px) {
-    height: 200px;
+    display: none;
   }
 `
 export const TrendingTitle = styled.h1`
@@ -71,12 +67,11 @@ export const Name = styled.p`
   line-height: 1.5;
   font-size: 16px;
   margin-top: 10px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   color: ${props => (props.isLightModeOn ? '#475569' : '#ffffff')};
   @media screen and (max-width: 768px) {
     font-size: 16px;
+    line-height: 1;
+    margin: 0px;
   }
 `
 
@@ -89,4 +84,32 @@ export const ViewCount = styled.p`
   @media screen and (max-width: 768px) {
     margin: 0px;
   }
+`
+export const ProfileImage = styled.img`
+  width: 60px;
+  margin-right: 15px;
+  margin-left: 10px;
+`
+export const TrendingMobileTitle = styled.h1`
+  font-size: 15px;
+  margin-bottom: 0px;
+`
+export const TrendingMobileDescription = styled.div`
+  color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  line-height: 1;
+  padding: 3px;
+  @media screen and (min-width: 767px) {
+    display: none;
+  }
+`
+export const TrendingDescriptionMobileContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 10px;
 `

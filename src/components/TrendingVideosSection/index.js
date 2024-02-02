@@ -2,6 +2,7 @@ import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 
+import FailedView from '../FailureView'
 import TrendingVideoCard from '../TrendingVideoCard/index'
 
 import WatchContext from '../../context/WatchContext'
@@ -100,6 +101,15 @@ class TrendingVideosSection extends Component {
       <Loader type="Watch" color="#475569" height="50" width="50" />
     </LoaderContainer>
   )
+
+  retryEverything = () => {
+    this.setState(
+      {apiStatus: apiStatusText.inProgress},
+      this.getTrendingVideosList,
+    )
+  }
+
+  renderFailureView = () => <FailedView />
 
   renderAllTrendingVideos = () => {
     const {apiStatus} = this.state
