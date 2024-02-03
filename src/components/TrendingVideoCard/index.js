@@ -1,4 +1,3 @@
-import {Link} from 'react-router-dom'
 import {formatDistanceToNow} from 'date-fns'
 
 import WatchContext from '../../context/WatchContext'
@@ -21,7 +20,6 @@ import {
 
 const TrendingVideoCard = props => {
   const {card} = props
-  console.log(card)
   const {
     name,
     publishedAt,

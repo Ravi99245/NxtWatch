@@ -1,20 +1,20 @@
 import {Component} from 'react'
-import Loader from 'react-loader-spinner'
+import {SiYoutubegaming} from 'react-icons/si'
 import Cookies from 'js-cookie'
+import Loader from 'react-loader-spinner'
 
-import FailedView from '../FailureView'
-import TrendingVideoCard from '../TrendingVideoCard/index'
+import GamingVideoCard from '../GamingVideoCard/index'
 
 import WatchContext from '../../context/WatchContext'
 
 import {
-  TrendingContainer,
-  HeadingContainer,
-  FireIcon,
-  FireIConContainer,
+  GamingVideosContainer,
   LoaderContainer,
-  TrendingVideosList,
-  TrendingContent,
+  HeadingContainer,
+  GamingIcon,
+  FireIConContainer,
+  VideosList,
+  VideosListContainer,
 } from './styledComponent'
 
 const apiStatusText = {
@@ -24,20 +24,16 @@ const apiStatusText = {
   inProgress: 'IN_PROGRESS',
 }
 
-class TrendingVideosSection extends Component {
-  state = {
-    total: '',
-    apiStatus: apiStatusText.initial,
-    trendingVideos: [],
-  }
+class GamingVideosSection extends Component {
+  state = {apiStatus: apiStatusText.initial, gamingVideos: [], total: ''}
 
   componentDidMount() {
-    this.getTrendingVideosList()
+    this.getGamingVideosList()
     this.setState({apiStatus: apiStatusText.inProgress})
   }
 
-  getTrendingVideosList = async () => {
-    const url = 'https://apis.ccbp.in/videos/trending'
+  getGamingVideosList = async () => {
+    const url = 'https://apis.ccbp.in/videos/gaming'
     const jwtToken = Cookies.get('jwt_token')
     const options = {
       headers: {
@@ -49,46 +45,43 @@ class TrendingVideosSection extends Component {
     const response = await fetch(url, options)
     if (response.ok) {
       const fetchedData = await response.json()
-      const {videos, total} = fetchedData
-      const videosList = videos.map(eachItem => ({
-        name: eachItem.channel.name,
-        profileImageUrl: eachItem.channel.profile_image_url,
+      const {total, videos} = fetchedData
+      const gamingVideos = videos.map(eachItem => ({
         id: eachItem.id,
-        publishedAt: eachItem.published_at,
         thumbnailUrl: eachItem.thumbnail_url,
         title: eachItem.title,
         viewCount: eachItem.view_count,
       }))
-      this.setState({
-        apiStatus: apiStatusText.success,
-        total,
-        trendingVideos: videosList,
-      })
+
+      this.setState({apiStatus: apiStatusText.success, total, gamingVideos})
     } else {
       this.setState({apiStatus: apiStatusText.failure})
     }
   }
 
-  renderTrendingVideosView = () => {
-    const {trendingVideos, total} = this.state
+  renderGamingVideos = () => {
+    const {gamingVideos, total} = this.state
+    console.log(gamingVideos)
     return (
       <WatchContext.Consumer>
         {value => {
           const {isLightModeOn} = value
           return (
-            <TrendingContent>
+            <>
               <HeadingContainer isLightModeOn={isLightModeOn}>
                 <FireIConContainer isLightModeOn={isLightModeOn}>
-                  <FireIcon size={35} />
+                  <GamingIcon size={35} />
                 </FireIConContainer>
-                <h1>Trending</h1>
+                <h1>Gaming</h1>
               </HeadingContainer>
-              <TrendingVideosList>
-                {trendingVideos.map(eachItem => (
-                  <TrendingVideoCard key={eachItem.id} card={eachItem} />
-                ))}
-              </TrendingVideosList>
-            </TrendingContent>
+              <VideosListContainer>
+                <VideosList>
+                  {gamingVideos.map(eachItem => (
+                    <GamingVideoCard key={eachItem.id} card={eachItem} />
+                  ))}
+                </VideosList>
+              </VideosListContainer>
+            </>
           )
         }}
       </WatchContext.Consumer>
@@ -101,21 +94,12 @@ class TrendingVideosSection extends Component {
     </LoaderContainer>
   )
 
-  retryEverything = () => {
-    this.setState(
-      {apiStatus: apiStatusText.inProgress},
-      this.getTrendingVideosList,
-    )
-  }
-
-  renderFailureView = () => <FailedView />
-
-  renderAllTrendingVideos = () => {
+  renderAllGamingVideosSection = () => {
     const {apiStatus} = this.state
 
     switch (apiStatus) {
       case apiStatusText.success:
-        return this.renderTrendingVideosView()
+        return this.renderGamingVideos()
       case apiStatusText.failure:
         return this.renderFailureView()
       case apiStatusText.inProgress:
@@ -131,9 +115,9 @@ class TrendingVideosSection extends Component {
         {value => {
           const {isLightModeOn} = value
           return (
-            <TrendingContainer isLightModeOn={isLightModeOn}>
-              {this.renderAllTrendingVideos()}
-            </TrendingContainer>
+            <GamingVideosContainer isLightModeOn={isLightModeOn}>
+              {this.renderAllGamingVideosSection()}
+            </GamingVideosContainer>
           )
         }}
       </WatchContext.Consumer>
@@ -141,4 +125,4 @@ class TrendingVideosSection extends Component {
   }
 }
 
-export default TrendingVideosSection
+export default GamingVideosSection
