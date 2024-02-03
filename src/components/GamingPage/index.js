@@ -7,7 +7,7 @@ import WatchContext from '../../context/WatchContext'
 import {
   GamingContainer,
   GamingContent,
-  VideosContainer,
+  GamingVideosContainer,
 } from './styledComponent'
 
 const GamingPage = () => (
@@ -19,9 +19,9 @@ const GamingPage = () => (
           <Header />
           <GamingContent>
             <Sidebar />
-            <VideosContainer>
+            <GamingVideosContainer>
               <GamingVideosSection />
-            </VideosContainer>
+            </GamingVideosContainer>
           </GamingContent>
         </GamingContainer>
       )

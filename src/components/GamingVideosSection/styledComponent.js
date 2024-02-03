@@ -50,6 +50,9 @@ export const VideosList = styled.ul`
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  @media screen and (max-width: 768px) {
+    width: 95%;
+  }
 `
 
 export const VideosListContainer = styled.div`
@@ -61,4 +64,11 @@ export const VideosListContainer = styled.div`
   padding-top: 15px;
   overflow-y: auto;
   height: 80vh;
+`
+
+export const Heading = styled.h1`
+  font-size: 35px;
+  @media screen and (max-width: 768px) {
+    font-size: 28px;
+  }
 `

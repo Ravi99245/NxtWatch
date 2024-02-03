@@ -25,7 +25,6 @@ class LoginForm extends Component {
     passwordType: true,
     showSubmitError: false,
     errorMsg: '',
-    isLightModeOn: true,
   }
 
   onChangeUsername = event => {

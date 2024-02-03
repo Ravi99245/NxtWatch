@@ -1,5 +1,3 @@
-import React from 'react'
-
 const MiddleDot = () => {
   const dotStyle = {
     fontSize: '40px', // Adjust the size of the dot

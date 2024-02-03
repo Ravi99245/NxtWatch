@@ -12,6 +12,6 @@ export const GamingContent = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
 `
-export const VideosContainer = styled.div`
-  width: 80%;
+export const GamingVideosContainer = styled.div`
+  width: 100%;
 `

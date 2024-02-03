@@ -26,7 +26,6 @@ const apiStatusText = {
 
 class TrendingVideosSection extends Component {
   state = {
-    total: '',
     apiStatus: apiStatusText.initial,
     trendingVideos: [],
   }
@@ -49,7 +48,7 @@ class TrendingVideosSection extends Component {
     const response = await fetch(url, options)
     if (response.ok) {
       const fetchedData = await response.json()
-      const {videos, total} = fetchedData
+      const {videos} = fetchedData
       const videosList = videos.map(eachItem => ({
         name: eachItem.channel.name,
         profileImageUrl: eachItem.channel.profile_image_url,
@@ -61,7 +60,6 @@ class TrendingVideosSection extends Component {
       }))
       this.setState({
         apiStatus: apiStatusText.success,
-        total,
         trendingVideos: videosList,
       })
     } else {
@@ -70,7 +68,7 @@ class TrendingVideosSection extends Component {
   }
 
   renderTrendingVideosView = () => {
-    const {trendingVideos, total} = this.state
+    const {trendingVideos} = this.state
     return (
       <WatchContext.Consumer>
         {value => {

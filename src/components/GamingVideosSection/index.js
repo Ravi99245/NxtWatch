@@ -1,10 +1,9 @@
 import {Component} from 'react'
-import {SiYoutubegaming} from 'react-icons/si'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 
 import GamingVideoCard from '../GamingVideoCard/index'
-
+import FiledView from '../FailureView'
 import WatchContext from '../../context/WatchContext'
 
 import {
@@ -15,6 +14,7 @@ import {
   FireIConContainer,
   VideosList,
   VideosListContainer,
+  Heading,
 } from './styledComponent'
 
 const apiStatusText = {
@@ -25,7 +25,7 @@ const apiStatusText = {
 }
 
 class GamingVideosSection extends Component {
-  state = {apiStatus: apiStatusText.initial, gamingVideos: [], total: ''}
+  state = {apiStatus: apiStatusText.initial, gamingVideos: []}
 
   componentDidMount() {
     this.getGamingVideosList()
@@ -45,7 +45,7 @@ class GamingVideosSection extends Component {
     const response = await fetch(url, options)
     if (response.ok) {
       const fetchedData = await response.json()
-      const {total, videos} = fetchedData
+      const {videos} = fetchedData
       const gamingVideos = videos.map(eachItem => ({
         id: eachItem.id,
         thumbnailUrl: eachItem.thumbnail_url,
@@ -53,14 +53,14 @@ class GamingVideosSection extends Component {
         viewCount: eachItem.view_count,
       }))
 
-      this.setState({apiStatus: apiStatusText.success, total, gamingVideos})
+      this.setState({apiStatus: apiStatusText.success, gamingVideos})
     } else {
       this.setState({apiStatus: apiStatusText.failure})
     }
   }
 
   renderGamingVideos = () => {
-    const {gamingVideos, total} = this.state
+    const {gamingVideos} = this.state
     console.log(gamingVideos)
     return (
       <WatchContext.Consumer>
@@ -72,7 +72,7 @@ class GamingVideosSection extends Component {
                 <FireIConContainer isLightModeOn={isLightModeOn}>
                   <GamingIcon size={35} />
                 </FireIConContainer>
-                <h1>Gaming</h1>
+                <Heading>Gaming</Heading>
               </HeadingContainer>
               <VideosListContainer>
                 <VideosList>
@@ -93,6 +93,15 @@ class GamingVideosSection extends Component {
       <Loader type="Watch" color="#475569" height="50" width="50" />
     </LoaderContainer>
   )
+
+  retryEverything = () => {
+    this.setState(
+      {apiStatus: apiStatusText.inProgress},
+      this.getGamingVideosList,
+    )
+  }
+
+  renderFailureView = () => <FiledView retryEverything={this.retryEverything} />
 
   renderAllGamingVideosSection = () => {
     const {apiStatus} = this.state

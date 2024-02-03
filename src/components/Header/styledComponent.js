@@ -1,8 +1,25 @@
 import styled from 'styled-components'
 import {FaFire} from 'react-icons/fa'
-import {MdHome, MdPlaylistAdd, MdWbSunny} from 'react-icons/md'
+import {MdHome, MdPlaylistAdd, MdWbSunny, MdClose} from 'react-icons/md'
 import {SiYoutubegaming} from 'react-icons/si'
 import {Link} from 'react-router-dom'
+
+export const StyledCloseIcon = styled(MdClose)`
+  color: ${props => (props.isLightModeOn ? '#181818' : '#ffffff')};
+`
+
+export const CloseContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`
+
+export const CloseButton = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+`
 
 export const LinkElement = styled(Link)`
   text-decoration: none;
@@ -82,11 +99,15 @@ export const PopupButton = styled.button`
 `
 
 export const PopupContainer = styled.div`
-  min-height: 50vh;
+  min-height: 100vh;
   width: 75vw;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+  background-color: ${props => (props.isLightModeOn ? '#f9f9f9' : '#0f0f0f')};
+  @media screen and (max-width: 576px) {
+    height: 70vh;
+  }
 `
 
 export const MobileLogoutButton = styled.button`
@@ -102,36 +123,71 @@ export const MobileLogoutButton = styled.button`
 
 export const FiltersContainer = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 `
 
 export const FiltersList = styled.ul`
   list-style-type: none;
   padding-left: 0px;
   width: 100%;
+  color:${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')}
+  background-color: ${props => (props.isLightModeOn ? '#f9f9f9' : '#0f0f0f')};
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 `
 
 export const ListItem = styled.li`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: ${props => (props.isActive ? '#f1f5f9' : '#ffffff')};
+  background-color: ${props => {
+    if (props.isLightModeOn) {
+      return props.isActive ? '#f1f5f9' : ''
+    }
+    return props.isActive ? '#424242' : ''
+  }};
   width: 100%;
   font-size: 18px;
   font-weight: ${props => (props.isActive ? 'bold' : 200)};
   padding: 5px;
 `
 export const StyledHomeIcon = styled(MdHome)`
-  color: ${props => (props.active === 'true' ? '#ff0000' : '')};
+  color: ${props => {
+    if (props.islightmodeon === 'true') {
+      return props.active === 'true' ? '#ff0000' : ''
+    }
+    return props.active === 'true' ? '#ff0000' : '#cccccc'
+  }};
 `
 
 export const StyledFireIcon = styled(FaFire)`
-  color: ${props => (props.active === 'true' ? '#ff0000' : '')};
+  color: ${props => {
+    if (props.islightmodeon === 'true') {
+      return props.active === 'true' ? '#ff0000' : ''
+    }
+    return props.active === 'true' ? '#ff0000' : '#cccccc'
+  }};
 `
 export const StyledGamingIcon = styled(SiYoutubegaming)`
-  color: ${props => (props.active === 'true' ? '#ff0000' : '')};
+  color: ${props => {
+    if (props.islightmodeon === 'true') {
+      return props.active === 'true' ? '#ff0000' : ''
+    }
+    return props.active === 'true' ? '#ff0000' : '#cccccc'
+  }};
 `
 export const StyledSavedIcon = styled(MdPlaylistAdd)`
-  color: ${props => (props.active === 'true' ? '#ff0000' : '')};
+  color: ${props => {
+    if (props.islightmodeon === 'true') {
+      return props.active === 'true' ? '#ff0000' : ''
+    }
+    return props.active === 'true' ? '#ff0000' : '#cccccc'
+  }};
 `
 
 export const LightModeIcon = styled(MdWbSunny)`
@@ -144,4 +200,5 @@ export const FilterItem = styled.p`
   margin-left: 12px;
   font-family: 'Roboto';
   font-weight: 500;
+  color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
 `
