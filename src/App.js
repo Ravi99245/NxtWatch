@@ -5,6 +5,7 @@ import LoginForm from './components/LoginForm'
 import Home from './components/Home'
 import TrendingPage from './components/TrendingPage/index'
 import GamingPage from './components/GamingPage/index'
+import VideoItemDetails from './components/VideoItemDetails/index'
 import WatchContext from './context/WatchContext'
 
 import './App.css'
@@ -38,6 +39,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/trending" component={TrendingPage} />
           <Route exact path="/gaming" component={GamingPage} />
+          <Route exact path="/videos/:id" component={VideoItemDetails} />
         </Switch>
       </WatchContext.Provider>
     )
