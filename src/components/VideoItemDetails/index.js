@@ -8,6 +8,7 @@ import {MdPlaylistAdd} from 'react-icons/md'
 import Header from '../Header'
 import Sidebar from '../Sidebar/index'
 import MiddleDot from '../MiddleDot'
+import FiledView from '../FailureView'
 
 import WatchContext from '../../context/WatchContext'
 import {
@@ -21,6 +22,17 @@ import {
   ViewCountContainer,
   Views,
   LikeButton,
+  LikeIcon,
+  DisLikeIcon,
+  SavedIcon,
+  Line,
+  ProfileImage,
+  ChannelName,
+  Subscribers,
+  Description,
+  MobileDescriptionContainer,
+  SubscribersContainer,
+  LargeDescription,
 } from './styledComponent'
 
 const apiStatusText = {
@@ -97,7 +109,17 @@ class VideoItemDetails extends Component {
 
   renderVideoPlayer = () => {
     const {videoDetails, isLiked, isDisliked, isSaved} = this.state
-    const {thumbnailUrl, videoUrl, title, viewCount, publishedAt} = videoDetails
+    const {
+      thumbnailUrl,
+      videoUrl,
+      title,
+      viewCount,
+      publishedAt,
+      profileImageUrl,
+      subscribersCount,
+      name,
+      description,
+    } = videoDetails
     console.log(thumbnailUrl)
     return (
       <WatchContext.Consumer>
@@ -105,7 +127,7 @@ class VideoItemDetails extends Component {
           const {isLightModeOn} = value
           return (
             <>
-              <ReactPlayerContainer url={videoUrl} controls playing />
+              <ReactPlayerContainer url={videoUrl} controls />
               <TitleHeading>{title}</TitleHeading>
               <DescriptionContainer>
                 <ViewCountContainer>
@@ -120,7 +142,7 @@ class VideoItemDetails extends Component {
                     isActive={isLiked}
                     onClick={this.ChangeLikeButton}
                   >
-                    <BiLike size={22} />
+                    <LikeIcon />
                     <Views>Like</Views>
                   </LikeButton>
                   <LikeButton
@@ -129,7 +151,7 @@ class VideoItemDetails extends Component {
                     isActive={isDisliked}
                     onClick={this.ChangeDislikeButton}
                   >
-                    <BiDislike size={22} />
+                    <DisLikeIcon />
                     <Views>Dislike</Views>
                   </LikeButton>
                   <LikeButton
@@ -138,11 +160,23 @@ class VideoItemDetails extends Component {
                     isActive={isSaved}
                     onClick={this.ChangeSaveButton}
                   >
-                    <MdPlaylistAdd size={22} />
+                    <SavedIcon />
                     <Views>{isSaved ? 'Saved' : 'Save'}</Views>
                   </LikeButton>
                 </ViewCountContainer>
               </DescriptionContainer>
+              <Line isLightModeOn={isLightModeOn} />
+              <SubscribersContainer>
+                <MobileDescriptionContainer>
+                  <ProfileImage src={profileImageUrl} alt="channel logo" />
+                  <div>
+                    <ChannelName>{name}</ChannelName>
+                    <Subscribers>{subscribersCount} subscribers</Subscribers>
+                    <LargeDescription>{description}</LargeDescription>
+                  </div>
+                </MobileDescriptionContainer>
+                <Description>{description}</Description>
+              </SubscribersContainer>
             </>
           )
         }}
@@ -155,6 +189,15 @@ class VideoItemDetails extends Component {
       <Loader type="Watch" color="#475569" height="50" width="50" />
     </LoaderContainer>
   )
+
+  retryEverything = () => {
+    this.setState(
+      {apiStatus: apiStatusText.inProgress},
+      this.getVideosItemDetails,
+    )
+  }
+
+  renderFailureView = () => <FiledView retryEverything={this.retryEverything} />
 
   renderVideoPlayerDetails = () => {
     const {apiStatus} = this.state

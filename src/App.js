@@ -11,7 +11,12 @@ import WatchContext from './context/WatchContext'
 import './App.css'
 
 class App extends Component {
-  state = {isLightModeOn: true, currentPage: 'home', savedVideos: []}
+  state = {
+    isLightModeOn: true,
+    currentPage: 'home',
+    savedVideos: [],
+    showBanner: true,
+  }
 
   changeTheme = () => {
     this.setState(prevState => ({
@@ -29,8 +34,12 @@ class App extends Component {
     }))
   }
 
+  closeBanner = () => {
+    this.setState({showBanner: false})
+  }
+
   render() {
-    const {isLightModeOn, currentPage, savedVideos} = this.state
+    const {isLightModeOn, currentPage, savedVideos, showBanner} = this.state
     return (
       <WatchContext.Provider
         value={{
@@ -40,6 +49,8 @@ class App extends Component {
           changePage: this.changePage,
           savedVideos,
           updateVideos: this.updateVideos,
+          showBanner,
+          closeBanner: this.closeBanner,
         }}
       >
         <Switch>

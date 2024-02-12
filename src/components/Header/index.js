@@ -48,6 +48,7 @@ class Header extends Component {
     if (jwtToken === undefined) {
       return <Redirect to="/login" />
     }
+
     return (
       <WatchContext.Consumer>
         {value => {

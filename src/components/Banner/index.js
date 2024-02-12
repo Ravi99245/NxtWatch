@@ -12,22 +12,20 @@ import {
 } from './styledComponent'
 
 class Banner extends Component {
-  state = {closeBanner: false}
-
-  closeBannerCard = () => {
-    this.setState({closeBanner: true})
-  }
+  state = {}
 
   render() {
-    const {closeBanner} = this.state
     return (
       <WatchContext.Consumer>
         {value => {
-          const {isLightModeOn} = value
+          const {isLightModeOn, showBanner, closeBanner} = value
+          const closeBannerCard = () => {
+            closeBanner()
+          }
           const nxtWatchLogo =
             'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
           return (
-            <BannerContainer closeBanner={closeBanner}>
+            <BannerContainer closeBanner={showBanner}>
               <PremiumContent>
                 <div>
                   <NxtWatchLogo src={nxtWatchLogo} alt="NxtWatch Logo" />
@@ -47,7 +45,7 @@ class Banner extends Component {
                 type="button"
                 aria-label="close"
                 data-testid="close"
-                onClick={this.closeBannerCard}
+                onClick={closeBannerCard}
               >
                 <CloseIcon />
               </CloseButton>

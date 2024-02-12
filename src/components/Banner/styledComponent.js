@@ -11,7 +11,7 @@ export const BannerContainer = styled.div`
   padding-bottom: 5px;
   color: #1e293b;
   font-family: 'Roboto';
-  display: ${props => (props.closeBanner ? 'none' : 'flex')};
+  display: ${props => (props.closeBanner ? 'flex' : 'none')};
   align-items: flex-start;
   justify-content: space-between;
   @media screen and (max-width: 768px) {

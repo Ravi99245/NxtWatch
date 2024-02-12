@@ -7,6 +7,8 @@ const WatchContext = React.createContext({
   changePage: () => {},
   savedVideos: [],
   updateVideos: () => {},
+  showBanner: true,
+  closeBanner: () => {},
 })
 
 export default WatchContext
