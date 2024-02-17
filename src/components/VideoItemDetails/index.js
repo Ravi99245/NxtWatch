@@ -2,8 +2,6 @@ import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 import {formatDistanceToNow} from 'date-fns'
-import {BiLike, BiDislike} from 'react-icons/bi'
-import {MdPlaylistAdd} from 'react-icons/md'
 
 import Header from '../Header'
 import Sidebar from '../Sidebar/index'
@@ -33,6 +31,8 @@ import {
   MobileDescriptionContainer,
   SubscribersContainer,
   LargeDescription,
+  YearContainer,
+  SaveButton,
 } from './styledComponent'
 
 const apiStatusText = {
@@ -73,15 +73,13 @@ class VideoItemDetails extends Component {
     if (response.ok) {
       const fetchedData = await response.json()
       const fetchedVideoDetails = fetchedData.video_details
-      console.log(fetchedVideoDetails)
       const videoDetails = {
+        id: fetchedVideoDetails.id,
         name: fetchedVideoDetails.channel.name,
         profileImageUrl: fetchedVideoDetails.channel.profile_image_url,
         subscribersCount: fetchedVideoDetails.channel.subscriber_count,
         description: fetchedVideoDetails.description,
-        publishedAt: formatDistanceToNow(
-          new Date(fetchedVideoDetails.published_at),
-        ),
+        publishedAt: fetchedVideoDetails.published_at,
         thumbnailUrl: fetchedVideoDetails.thumbnail_url,
         title: fetchedVideoDetails.title,
         videoUrl: fetchedVideoDetails.video_url,
@@ -108,9 +106,9 @@ class VideoItemDetails extends Component {
   }
 
   renderVideoPlayer = () => {
-    const {videoDetails, isLiked, isDisliked, isSaved} = this.state
+    const {videoDetails, isLiked, isDisliked} = this.state
     const {
-      thumbnailUrl,
+      id,
       videoUrl,
       title,
       viewCount,
@@ -120,11 +118,16 @@ class VideoItemDetails extends Component {
       name,
       description,
     } = videoDetails
-    console.log(thumbnailUrl)
     return (
       <WatchContext.Consumer>
         {value => {
-          const {isLightModeOn} = value
+          const {isLightModeOn, updateVideos, savedVideos} = value
+          const changeSaveButton = () => {
+            this.ChangeSaveButton()
+            updateVideos(videoDetails)
+          }
+          const isAdded = savedVideos.some(eachItem => eachItem.id === id)
+          const time = formatDistanceToNow(new Date(publishedAt))
           return (
             <>
               <ReactPlayerContainer url={videoUrl} controls />
@@ -132,8 +135,10 @@ class VideoItemDetails extends Component {
               <DescriptionContainer>
                 <ViewCountContainer>
                   <Views>{viewCount}</Views>
-                  <MiddleDot />
-                  <Views>{publishedAt}</Views>
+                  <YearContainer>
+                    <MiddleDot />
+                    <Views>{time}</Views>
+                  </YearContainer>
                 </ViewCountContainer>
                 <ViewCountContainer>
                   <LikeButton
@@ -154,15 +159,15 @@ class VideoItemDetails extends Component {
                     <DisLikeIcon />
                     <Views>Dislike</Views>
                   </LikeButton>
-                  <LikeButton
+                  <SaveButton
                     type="button"
                     data-testid="like"
-                    isActive={isSaved}
-                    onClick={this.ChangeSaveButton}
+                    isAdded={isAdded}
+                    onClick={changeSaveButton}
                   >
                     <SavedIcon />
-                    <Views>{isSaved ? 'Saved' : 'Save'}</Views>
-                  </LikeButton>
+                    <Views>{isAdded ? 'Saved' : 'Save'}</Views>
+                  </SaveButton>
                 </ViewCountContainer>
               </DescriptionContainer>
               <Line isLightModeOn={isLightModeOn} />

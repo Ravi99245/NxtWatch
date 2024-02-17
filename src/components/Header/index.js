@@ -36,8 +36,6 @@ class Header extends Component {
   state = {}
 
   onClickLogout = () => {
-    const jwtToken = Cookies.get('jwt_token')
-    console.log(jwtToken)
     Cookies.remove('jwt_token')
     const {history} = this.props
     history.replace('/login')
@@ -53,12 +51,10 @@ class Header extends Component {
       <WatchContext.Consumer>
         {value => {
           const {isLightModeOn, changePage, changeTheme, currentPage} = value
-          console.log(isLightModeOn)
           const updateContextPageToHome = () => {
             changePage('home')
           }
           const updateContextPageToTrend = () => {
-            console.log('clicked')
             changePage('trending')
           }
           const updateContextPageToGame = () => {

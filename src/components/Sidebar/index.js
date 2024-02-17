@@ -26,12 +26,10 @@ class Sidebar extends Component {
       <WatchContext.Consumer>
         {value => {
           const {isLightModeOn, currentPage, changePage} = value
-          console.log(currentPage)
           const updateContextPageToHome = () => {
             changePage('home')
           }
           const updateContextPageToTrend = () => {
-            console.log('clicked')
             changePage('trending')
           }
           const updateContextPageToGame = () => {

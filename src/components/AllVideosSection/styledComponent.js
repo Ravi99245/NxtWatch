@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import {MdSearch} from 'react-icons/md'
 
 export const AllVideosContainer = styled.div`
-  min-height: 90vh;
+  height: 90vh;
   padding: 20px;
+  overflow-y: auto;
   padding-top: 10px;
   width: 100%;
   margin-top: 8px;

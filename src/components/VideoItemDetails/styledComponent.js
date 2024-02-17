@@ -48,8 +48,9 @@ export const LoaderContainer = styled.div`
 
 export const VideoContainer = styled.div`
   width: 100%;
-  min-height: 90vh;
+  height: 90vh;
   padding: 25px;
+  overflow-y: auto;
   color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
   background-color: ${props => (props.isLightModeOn ? '#f1f5f9' : '#000000')};
   font-family: 'Roboto';
@@ -82,6 +83,7 @@ export const DescriptionContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   @media screen and (max-width: 768px) {
     flex-direction: column;
     align-items: flex-start;
@@ -98,12 +100,17 @@ export const ViewCountContainer = styled.div`
   line-height: 1.5;
   color: #475569;
   margin: 0px;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    justify-content: space-between;
+  }
 `
 
 export const Views = styled.p`
   font-size: 16px;
   margin: 5px;
   font-weight: 500;
+  color: ${props => (props.isAdded ? '#4f46e5' : '')};
   @media screen and (max-width: 768px) {
     font-size: 21px;
     font-weight: 600;
@@ -114,6 +121,22 @@ export const LikeButton = styled.button`
   background-color: transparent;
   border: none;
   color: ${props => (props.isActive ? '#2563eb' : '#64748b')};
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  @media screen and (max-width: 768px) {
+    line-height: 1;
+    font-size: 50px;
+  }
+`
+
+export const SaveButton = styled.button`
+  background-color: transparent;
+  border: none;
+  color: ${props => (props.isAdded ? '#2563eb' : '#64748b')};
   display: flex;
   align-items: center;
   font-size: 16px;
@@ -175,4 +198,9 @@ export const MobileDescriptionContainer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+`
+export const YearContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0px;
 `

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const HomeContainer = styled.div`
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   background-color: ${props => (props.isLightModeOn ? '#f9f9f9' : '#181818')};
 `
 export const HomeContent = styled.div`
@@ -24,6 +24,7 @@ export const VideoContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  overflow-y: auto;
   @media screen and (max-width: 768px) {
     padding: 15px;
     padding-top: 5px;

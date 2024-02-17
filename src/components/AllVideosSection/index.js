@@ -40,10 +40,8 @@ class AllVideosSection extends Component {
   }
 
   getVideosList = async () => {
-    const {searchInput, url} = this.state
-    console.log(searchInput)
+    const {url} = this.state
     const jwtToken = Cookies.get('jwt_token')
-    console.log(url)
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -91,9 +89,7 @@ class AllVideosSection extends Component {
   }
 
   renderSearchInput = () => {
-    const {searchInput, videosList, total} = this.state
-    console.log(videosList)
-    console.log(total)
+    const {searchInput} = this.state
     return (
       <WatchContext.Consumer>
         {value => {

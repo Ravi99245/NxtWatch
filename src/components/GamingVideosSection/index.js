@@ -61,7 +61,6 @@ class GamingVideosSection extends Component {
 
   renderGamingVideos = () => {
     const {gamingVideos} = this.state
-    console.log(gamingVideos)
     return (
       <WatchContext.Consumer>
         {value => {
