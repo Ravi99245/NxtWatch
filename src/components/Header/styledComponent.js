@@ -105,9 +105,6 @@ export const PopupContainer = styled.div`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   background-color: ${props => (props.isLightModeOn ? '#f9f9f9' : '#0f0f0f')};
-  @media screen and (max-width: 576px) {
-    height: 70vh;
-  }
 `
 
 export const MobileLogoutButton = styled.button`
@@ -201,4 +198,82 @@ export const FilterItem = styled.p`
   font-family: 'Roboto';
   font-weight: 500;
   color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
+`
+
+export const LogoutPopupContainer = styled.div`
+  min-height: 22vh;
+  width: 80vw;
+  background-color: ${props => (props.isLightModeOn ? '#f1f5f9' : '#212121')};
+  padding: 12px;
+  border-radius: 10px;
+  @media screen and (min-width: 769px) {
+    width: 30vw;
+    min-height: 20vh;
+    padding: 16px;
+  }
+`
+export const PopupTotalContainer = styled.div`
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto';
+`
+export const LogOutHeading = styled.div`
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 14px;
+  text-align: center;
+  color: ${props => (props.isLightModeOn ? '#4f46e5' : '#ffffff')};
+  @media screen and (min-width: 769px) {
+    font-size: 18px;
+  }
+`
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+`
+
+export const CancelButton = styled.button`
+  font-size: 20px;
+  background-color: transparent;
+  padding: 8px;
+  border: ${`1px solid #cbd5e1`};
+  width: 120px;
+  height: 60px;
+  font-weight: bold;
+  color: ${props => (props.isLightModeOn ? '#94a3b8' : '#94a3b8')};
+  cursor: pointer;
+  outline: none;
+  @media screen and (min-width: 769px) {
+    font-size: 15px;
+    padding: 4px;
+    width: 90px;
+    height: 40px;
+  }
+`
+export const ConfirmButton = styled.button`
+  padding: 8px;
+  border: ${`1px solid #cbd5e1`};
+  width: 120px;
+  height: 60px;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #3b82f6;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  @media screen and (min-width: 769px) {
+    font-size: 15px;
+    padding: 4px;
+    width: 90px;
+    height: 40px;
+  }
 `

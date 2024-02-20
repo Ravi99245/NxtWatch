@@ -16,6 +16,11 @@ import {
   VideosContainer,
   VideosList,
   LoaderContainer,
+  NoVideosContainer,
+  NoVideosImage,
+  NoResultsHeading,
+  NoResultsDescription,
+  RetryButton,
 } from './styledComponent'
 
 const apiStatusText = {
@@ -130,7 +135,32 @@ class AllVideosSection extends Component {
         </VideosList>
       </VideosContainer>
     ) : (
-      <div>No Videos</div>
+      <WatchContext>
+        {value => {
+          const {isLightModeOn} = value
+          return (
+            <NoVideosContainer>
+              <NoVideosImage
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png "
+                alt="no videos"
+              />
+              <NoResultsHeading isLightModeOn={isLightModeOn}>
+                No Search results found
+              </NoResultsHeading>
+              <NoResultsDescription isLightModeOn={isLightModeOn}>
+                Try different key words or remove search filter
+              </NoResultsDescription>
+              <RetryButton
+                type="button"
+                aria-label="retry"
+                onClick={this.retryEverything}
+              >
+                Retry
+              </RetryButton>
+            </NoVideosContainer>
+          )
+        }}
+      </WatchContext>
     )
   }
 

@@ -78,6 +78,17 @@ export const VideosContainer = styled.div`
   width: 100%;
   flex-wrap: wrap;
 `
+
+export const NoVideosContainer = styled.div`
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto';
+`
+
 export const VideosList = styled.ul`
   list-style-type: none;
   padding: 0px;
@@ -107,4 +118,40 @@ export const LoaderContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`
+
+export const NoVideosImage = styled.img`
+  width: 50%;
+`
+export const NoResultsHeading = styled.h1`
+  font-size: 35px;
+  margin: 0px;
+  text-align: center;
+  color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
+  }
+`
+
+export const NoResultsDescription = styled.p`
+  font-size: 22px;
+  color: #64748b;
+  text-align: center;
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
+`
+export const RetryButton = styled.button`
+  border: none;
+  background-color: #4f46e5;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 12px 22px 12px 22px;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 4px;
+  min-width: 80px;
+  margin: 0px;
+  margin-top: 5px;
 `

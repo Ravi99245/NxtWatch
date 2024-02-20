@@ -106,7 +106,9 @@ class TrendingVideosSection extends Component {
     )
   }
 
-  renderFailureView = () => <FailedView />
+  renderFailureView = () => (
+    <FailedView retryEverything={this.retryEverything} />
+  )
 
   renderAllTrendingVideos = () => {
     const {apiStatus} = this.state

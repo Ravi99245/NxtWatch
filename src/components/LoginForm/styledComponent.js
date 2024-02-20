@@ -90,6 +90,7 @@ export const InputElement = styled.input`
   padding: 10px 20px 10px 20px;
   outline: none;
   width: 90%;
+  color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
   @media screen and (max-width: 768px) {
     width: 95%;
     height: 35px;

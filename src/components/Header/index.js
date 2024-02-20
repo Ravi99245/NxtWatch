@@ -30,6 +30,12 @@ import {
   StyledCloseIcon,
   CloseContainer,
   CloseButton,
+  LogoutPopupContainer,
+  PopupTotalContainer,
+  LogOutHeading,
+  CancelButton,
+  ButtonContainer,
+  ConfirmButton,
 } from './styledComponent'
 
 class Header extends Component {
@@ -208,22 +214,88 @@ class Header extends Component {
                     </PopupContainer>
                   )}
                 </Popup>
-                <MobileLogoutButton
-                  type="button"
-                  aria-label="logout"
-                  onClick={this.onClickLogout}
-                  isLightModeOn={isLightModeOn}
+                <Popup
+                  trigger={
+                    <MobileLogoutButton
+                      type="button"
+                      aria-label="logout"
+                      isLightModeOn={isLightModeOn}
+                    >
+                      <FiLogOut size={28} />
+                    </MobileLogoutButton>
+                  }
+                  modal
+                  position="top-right"
                 >
-                  <FiLogOut size={28} />
-                </MobileLogoutButton>
-                <LogoutButton
-                  type="button"
-                  aria-label="logout"
-                  isLightModeOn={isLightModeOn}
-                  onClick={this.onClickLogout}
+                  {close => (
+                    <PopupTotalContainer>
+                      <LogoutPopupContainer isLightModeOn={isLightModeOn}>
+                        <LogOutHeading isLightModeOn={isLightModeOn}>
+                          Are you sure You want to logout?
+                        </LogOutHeading>
+                        <ButtonContainer>
+                          <CancelButton
+                            type="button"
+                            aria-label="cancel"
+                            isLightModeOn={isLightModeOn}
+                            onClick={() => close()}
+                          >
+                            Cancel
+                          </CancelButton>
+                          <ConfirmButton
+                            type="button"
+                            aria-label="cancel"
+                            onClick={this.onClickLogout}
+                            isLightModeOn={isLightModeOn}
+                          >
+                            Confirm
+                          </ConfirmButton>
+                        </ButtonContainer>
+                      </LogoutPopupContainer>
+                    </PopupTotalContainer>
+                  )}
+                </Popup>
+                <Popup
+                  trigger={
+                    <LogoutButton
+                      type="button"
+                      aria-label="logout"
+                      isLightModeOn={isLightModeOn}
+                    >
+                      Logout
+                    </LogoutButton>
+                  }
+                  modal
+                  position="top-right"
                 >
-                  Logout
-                </LogoutButton>
+                  {close => (
+                    <PopupTotalContainer>
+                      <LogoutPopupContainer isLightModeOn={isLightModeOn}>
+                        <LogOutHeading isLightModeOn={isLightModeOn}>
+                          Are you sure You want to logout?
+                        </LogOutHeading>
+                        <ButtonContainer>
+                          <CancelButton
+                            type="button"
+                            aria-label="cancel"
+                            isLightModeOn={isLightModeOn}
+                            onClick={() => close()}
+                          >
+                            Cancel
+                          </CancelButton>
+                          <ConfirmButton
+                            type="button"
+                            aria-label="cancel"
+                            onClick={this.onClickLogout}
+                            isLightModeOn={isLightModeOn}
+                          >
+                            Confirm
+                          </ConfirmButton>
+                        </ButtonContainer>
+                      </LogoutPopupContainer>
+                    </PopupTotalContainer>
+                  )}
+                </Popup>
               </NavElements>
             </NavBar>
           )

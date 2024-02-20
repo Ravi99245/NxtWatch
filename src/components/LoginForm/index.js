@@ -57,6 +57,7 @@ class LoginForm extends Component {
                 value={username}
                 onChange={this.onChangeUsername}
                 placeholder="Username"
+                isLightModeOn={isLightModeOn}
               />
             </InputContainer>
           )
@@ -84,6 +85,7 @@ class LoginForm extends Component {
                 value={password}
                 onChange={this.onChangePassword}
                 placeholder="Password"
+                isLightModeOn={isLightModeOn}
               />
             </InputContainer>
           )
