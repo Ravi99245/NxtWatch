@@ -201,13 +201,13 @@ export const FilterItem = styled.p`
 `
 
 export const LogoutPopupContainer = styled.div`
-  min-height: 22vh;
-  width: 80vw;
+  min-height: 20vh;
+  width: 30vw;
   background-color: ${props => (props.isLightModeOn ? '#f1f5f9' : '#212121')};
   padding: 12px;
   border-radius: 10px;
-  @media screen and (min-width: 769px) {
-    width: 30vw;
+  @media screen and (max-width: 769px) {
+    width: 75vw;
     min-height: 20vh;
     padding: 16px;
   }

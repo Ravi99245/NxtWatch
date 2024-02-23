@@ -4,6 +4,7 @@ import {MdClose} from 'react-icons/md'
 export const BannerContainer = styled.div`
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
   background-size: cover;
+  background-position: center center;
   min-height: 38vh;
   width: 100%;
   padding: 30px;
@@ -14,9 +15,9 @@ export const BannerContainer = styled.div`
   display: ${props => (props.closeBanner ? 'flex' : 'none')};
   align-items: flex-start;
   justify-content: space-between;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 769px) {
     background-position: center center;
-    min-height: 28vh;
+    min-height: 25vh;
     padding-top: 6px;
     width: 100%;
     padding: 15px;

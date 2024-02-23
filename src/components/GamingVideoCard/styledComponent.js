@@ -4,10 +4,10 @@ import {Link} from 'react-router-dom'
 export const ThumbnailImage = styled.img`
   width: 250px;
   @media screen and (max-width: 576px) {
-    width: 180px;
+    width: 150px;
   }
   @media screen and (min-width: 576px) and (max-width: 768px) {
-    width: 200px;
+    width: 180px;
   }
 `
 
