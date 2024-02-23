@@ -23,10 +23,10 @@ const NotFound = () => (
           <ContentContainer isLightModeOn={isLightModeOn}>
             <Sidebar />
             <DescriptionContainer>
-              <NotFoundImage src={imageUrl} alt="not-found" />
+              <NotFoundImage src={imageUrl} alt="not found" />
               <h1>Page Not Found</h1>
               <NotFoundDescription>
-                We are sorry, the page you requested could not be found
+                we are sorry, the page you requested could not be found.
               </NotFoundDescription>
             </DescriptionContainer>
           </ContentContainer>

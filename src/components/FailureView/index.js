@@ -25,9 +25,9 @@ const FiledView = props => {
             <FailureImage src={failedImageUrl} alt="failure view" />
             <FailedHeading>Oops! Something Went Wrong</FailedHeading>
             <FailedDescription>
-              We are having some trouble to complete your request.
+              We are having some trouble to complete your request. Please try
+              again.
             </FailedDescription>
-            <FailedDescription>Please try again.</FailedDescription>
             <RetryButton type="button" aria-label="retry" onClick={retry}>
               Retry
             </RetryButton>

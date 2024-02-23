@@ -96,7 +96,7 @@ export const SocialLogo = styled.img`
   margin-right: 15px;
 `
 
-export const ContactUs = styled.h1`
+export const ContactUs = styled.p`
   font-size: 16px;
   font-weight: bold;
   font-family: 'Roboto';

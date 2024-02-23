@@ -16,6 +16,7 @@ import {
   TrendingMobileTitle,
   TrendingMobileDescription,
   TrendingDescriptionMobileContainer,
+  ViewsSection,
 } from './styledComponent'
 
 const TrendingVideoCard = props => {
@@ -53,10 +54,10 @@ const TrendingVideoCard = props => {
                   <ProfileImage src={profileImageUrl} alt="channel logo" />
                   <TrendingDescriptionMobileContainer>
                     <TrendingMobileTitle>{title}</TrendingMobileTitle>
-                    <p>
-                      {name} <MiddleDot /> {viewCount} <MiddleDot />{' '}
-                      {timeDuration}{' '}
-                    </p>
+                    <ViewsSection>
+                      <p>{name} </p> <MiddleDot /> <p>{viewCount} </p>{' '}
+                      <MiddleDot /> <p>{timeDuration}</p>{' '}
+                    </ViewsSection>
                   </TrendingDescriptionMobileContainer>
                 </TrendingMobileDescription>
               </TrendingContent>

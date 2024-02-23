@@ -157,7 +157,7 @@ export const ProfileImage = styled.img`
   width: 60px;
   margin-right: 15px;
   @media screen and (max-width: 768px) {
-    width: 80px;
+    width: 50px;
   }
 `
 

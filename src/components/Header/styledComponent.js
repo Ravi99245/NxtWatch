@@ -233,7 +233,7 @@ export const PopupTotalContainer = styled.div`
   align-items: center;
   font-family: 'Roboto';
 `
-export const LogOutHeading = styled.div`
+export const LogOutHeading = styled.p`
   font-size: 20px;
   font-weight: 500;
   margin-top: 14px;
@@ -269,6 +269,10 @@ export const CancelButton = styled.button`
     width: 90px;
     height: 40px;
   }
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+    height: 40px;
+  }
 `
 export const ConfirmButton = styled.button`
   padding: 8px;
@@ -285,6 +289,10 @@ export const ConfirmButton = styled.button`
     font-size: 15px;
     padding: 4px;
     width: 90px;
+    height: 40px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
     height: 40px;
   }
 `

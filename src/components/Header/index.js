@@ -80,7 +80,7 @@ class Header extends Component {
             <NavBar isLightModeOn={isLightModeOn}>
               <div>
                 <Link to="/">
-                  <NxtWatchLogo src={imageUrl} alt="NxtWatch Logo" />
+                  <NxtWatchLogo src={imageUrl} alt="website logo" />
                 </Link>
               </div>
               <NavElements>
@@ -88,7 +88,6 @@ class Header extends Component {
                   <ThemeButton
                     type="button"
                     data-testid="theme"
-                    aria-label="theme"
                     isLightModeOn={isLightModeOn}
                     onClick={changeBackGroundTheme}
                   >
@@ -98,7 +97,6 @@ class Header extends Component {
                   <ThemeButton
                     type="button"
                     data-testid="theme"
-                    aria-label="theme"
                     isLightModeOn={isLightModeOn}
                     onClick={changeBackGroundTheme}
                   >
@@ -119,6 +117,7 @@ class Header extends Component {
                       <MdMenu size={30} />
                     </PopupButton>
                   }
+                  className="popup-content"
                   modal
                   position="top-right"
                 >
@@ -237,6 +236,7 @@ class Header extends Component {
                       <FiLogOut size={28} />
                     </MobileLogoutButton>
                   }
+                  className="popup-content"
                   modal
                   position="top-right"
                 >
@@ -272,12 +272,13 @@ class Header extends Component {
                   trigger={
                     <LogoutButton
                       type="button"
-                      aria-label="logout"
                       isLightModeOn={isLightModeOn}
+                      data-testid="Logout"
                     >
                       Logout
                     </LogoutButton>
                   }
+                  className="popup-content"
                   modal
                   position="top-right"
                 >
@@ -285,7 +286,7 @@ class Header extends Component {
                     <PopupTotalContainer>
                       <LogoutPopupContainer isLightModeOn={isLightModeOn}>
                         <LogOutHeading isLightModeOn={isLightModeOn}>
-                          Are you sure You want to logout?
+                          Are you sure, you want to logout?
                         </LogOutHeading>
                         <ButtonContainer>
                           <CancelButton

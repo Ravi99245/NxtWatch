@@ -13,6 +13,12 @@ export const ListItem = styled.li`
   }
 `
 
+export const ViewsSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+
 export const LinkItem = styled(Link)`
   text-decoration: none;
   color: ${props => (props.isLightModeOn ? '#1e293b' : '#ffffff')};
@@ -55,7 +61,7 @@ export const TrendingDescriptionContainer = styled.div`
     display: none;
   }
 `
-export const TrendingTitle = styled.h1`
+export const TrendingTitle = styled.p`
   font-size: 20px;
   margin: 0px;
   @media screen and (max-width: 768px) {

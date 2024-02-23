@@ -22,9 +22,10 @@ export const ListItem = styled.li`
   line-height: 1.5;
   margin-bottom: 25px;
 `
-export const Title = styled.h1`
+export const Title = styled.p`
   font-size: 18px;
   margin: 0px;
+  font-weight: bold;
 `
 
 export const ViewCount = styled.p`
