@@ -36,6 +36,7 @@ import {
   CancelButton,
   ButtonContainer,
   ConfirmButton,
+  PopupTotalMenuContainer,
 } from './styledComponent'
 
 class Header extends Component {
@@ -122,96 +123,108 @@ class Header extends Component {
                   position="top-right"
                 >
                   {close => (
-                    <PopupContainer isLightModeOn={isLightModeOn}>
-                      <CloseContainer>
-                        <CloseButton
-                          type="button"
-                          aria-label="close"
-                          onClick={() => close()}
-                        >
-                          <StyledCloseIcon
-                            size={35}
-                            isLightModeOn={isLightModeOn}
-                          />
-                        </CloseButton>
-                      </CloseContainer>
-                      <FiltersContainer>
-                        <FiltersList isLightModeOn={isLightModeOn}>
-                          <LinkElement to="/">
-                            <ListItem
+                    <PopupTotalMenuContainer>
+                      <PopupContainer isLightModeOn={isLightModeOn}>
+                        <CloseContainer>
+                          <CloseButton
+                            type="button"
+                            aria-label="close"
+                            onClick={() => close()}
+                          >
+                            <StyledCloseIcon
+                              size={35}
                               isLightModeOn={isLightModeOn}
-                              onClick={updateContextPageToHome}
-                              isActive={currentPage === 'home'}
-                            >
-                              <StyledHomeIcon
-                                size={25}
-                                islightmodeon={isLightModeOn ? 'true' : 'false'}
-                                active={
-                                  currentPage === 'home' ? 'true' : 'false'
-                                }
-                              />
-                              <FilterItem isLightModeOn={isLightModeOn}>
-                                Home
-                              </FilterItem>
-                            </ListItem>
-                          </LinkElement>
-                          <LinkElement to="/trending">
-                            <ListItem
-                              onClick={updateContextPageToTrend}
-                              isLightModeOn={isLightModeOn}
-                              isActive={currentPage === 'trending'}
-                            >
-                              <StyledFireIcon
-                                size={25}
-                                islightmodeon={isLightModeOn ? 'true' : 'false'}
-                                active={
-                                  currentPage === 'trending' ? 'true' : 'false'
-                                }
-                              />
-                              <FilterItem isLightModeOn={isLightModeOn}>
-                                Trending
-                              </FilterItem>
-                            </ListItem>
-                          </LinkElement>
-                          <LinkElement to="/gaming">
-                            <ListItem
-                              onClick={updateContextPageToGame}
-                              isLightModeOn={isLightModeOn}
-                              isActive={currentPage === 'gaming'}
-                            >
-                              <StyledGamingIcon
-                                size={25}
-                                islightmodeon={isLightModeOn ? 'true' : 'false'}
-                                active={
-                                  currentPage === 'gaming' ? 'true' : 'false'
-                                }
-                              />
-                              <FilterItem isLightModeOn={isLightModeOn}>
-                                Gaming
-                              </FilterItem>
-                            </ListItem>
-                          </LinkElement>
-                          <LinkElement to="/saved-videos">
-                            <ListItem
-                              onClick={updateContextPageToSave}
-                              isLightModeOn={isLightModeOn}
-                              isActive={currentPage === 'saved'}
-                            >
-                              <StyledSavedIcon
-                                size={25}
-                                islightmodeon={isLightModeOn ? 'true' : 'false'}
-                                active={
-                                  currentPage === 'saved' ? 'true' : 'false'
-                                }
-                              />
-                              <FilterItem isLightModeOn={isLightModeOn}>
-                                Saved Videos
-                              </FilterItem>
-                            </ListItem>
-                          </LinkElement>
-                        </FiltersList>
-                      </FiltersContainer>
-                    </PopupContainer>
+                            />
+                          </CloseButton>
+                        </CloseContainer>
+                        <FiltersContainer>
+                          <FiltersList isLightModeOn={isLightModeOn}>
+                            <LinkElement to="/">
+                              <ListItem
+                                isLightModeOn={isLightModeOn}
+                                onClick={updateContextPageToHome}
+                                isActive={currentPage === 'home'}
+                              >
+                                <StyledHomeIcon
+                                  size={25}
+                                  islightmodeon={
+                                    isLightModeOn ? 'true' : 'false'
+                                  }
+                                  active={
+                                    currentPage === 'home' ? 'true' : 'false'
+                                  }
+                                />
+                                <FilterItem isLightModeOn={isLightModeOn}>
+                                  Home
+                                </FilterItem>
+                              </ListItem>
+                            </LinkElement>
+                            <LinkElement to="/trending">
+                              <ListItem
+                                onClick={updateContextPageToTrend}
+                                isLightModeOn={isLightModeOn}
+                                isActive={currentPage === 'trending'}
+                              >
+                                <StyledFireIcon
+                                  size={25}
+                                  islightmodeon={
+                                    isLightModeOn ? 'true' : 'false'
+                                  }
+                                  active={
+                                    currentPage === 'trending'
+                                      ? 'true'
+                                      : 'false'
+                                  }
+                                />
+                                <FilterItem isLightModeOn={isLightModeOn}>
+                                  Trending
+                                </FilterItem>
+                              </ListItem>
+                            </LinkElement>
+                            <LinkElement to="/gaming">
+                              <ListItem
+                                onClick={updateContextPageToGame}
+                                isLightModeOn={isLightModeOn}
+                                isActive={currentPage === 'gaming'}
+                              >
+                                <StyledGamingIcon
+                                  size={25}
+                                  islightmodeon={
+                                    isLightModeOn ? 'true' : 'false'
+                                  }
+                                  active={
+                                    currentPage === 'gaming' ? 'true' : 'false'
+                                  }
+                                />
+                                <FilterItem isLightModeOn={isLightModeOn}>
+                                  Gaming
+                                </FilterItem>
+                              </ListItem>
+                            </LinkElement>
+                            <LinkElement to="/saved-videos">
+                              <ListItem
+                                onClick={updateContextPageToSave}
+                                isLightModeOn={isLightModeOn}
+                                isActive={currentPage === 'saved'}
+                              >
+                                <StyledSavedIcon
+                                  size={25}
+                                  islightmodeon={
+                                    isLightModeOn ? 'true' : 'false'
+                                  }
+                                  active={
+                                    currentPage === 'saved' ? 'true' : 'false'
+                                  }
+                                />
+                                <FilterItem isLightModeOn={isLightModeOn}>
+                                  Saved Videos
+                                </FilterItem>
+                              </ListItem>
+                            </LinkElement>
+                          </FiltersList>
+                        </FiltersContainer>
+                      </PopupContainer>
+                    </PopupTotalMenuContainer>
                   )}
                 </Popup>
                 <Popup

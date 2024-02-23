@@ -99,7 +99,7 @@ export const PopupButton = styled.button`
 `
 
 export const PopupContainer = styled.div`
-  min-height: 100vh;
+  height: 70vh;
   width: 75vw;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -124,7 +124,7 @@ export const FiltersContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100%;
 `
 
 export const FiltersList = styled.ul`
@@ -212,6 +212,17 @@ export const LogoutPopupContainer = styled.div`
     padding: 16px;
   }
 `
+
+export const PopupTotalMenuContainer = styled.div`
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
 export const PopupTotalContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   height: 100vh;

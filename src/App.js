@@ -7,6 +7,8 @@ import TrendingPage from './components/TrendingPage/index'
 import GamingPage from './components/GamingPage/index'
 import VideoItemDetails from './components/VideoItemDetails/index'
 import SavedVideos from './components/SavedVideos/index'
+import NotFound from './components/NotFound/index'
+import ProtectedRoute from './components/ProtectedRoute/index'
 import WatchContext from './context/WatchContext'
 
 import './App.css'
@@ -67,11 +69,16 @@ class App extends Component {
       >
         <Switch>
           <Route exact path="/login" component={LoginForm} />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/trending" component={TrendingPage} />
-          <Route exact path="/gaming" component={GamingPage} />
-          <Route exact path="/videos/:id" component={VideoItemDetails} />
-          <Route exact path="/saved-videos" component={SavedVideos} />
+          <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute exact path="/trending" component={TrendingPage} />
+          <ProtectedRoute exact path="/gaming" component={GamingPage} />
+          <ProtectedRoute
+            exact
+            path="/videos/:id"
+            component={VideoItemDetails}
+          />
+          <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
+          <Route component={NotFound} />
         </Switch>
       </WatchContext.Provider>
     )
