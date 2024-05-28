@@ -3,10 +3,12 @@ import styled from 'styled-components'
 export const HomeContainer = styled.div`
   width: 100vw;
   height: 100vh;
+  min-height: 100vh;
   background-color: ${props => (props.isLightModeOn ? '#f9f9f9' : '#181818')};
 `
 export const HomeContent = styled.div`
   display: flex;
+
   width: 100%;
   @media screen and (max-width: 768px) {
     width: 100vw;
