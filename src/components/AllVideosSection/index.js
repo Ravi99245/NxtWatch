@@ -103,7 +103,7 @@ class AllVideosSection extends Component {
             <SearchInputContainer>
               <SearchElement
                 type="search"
-                placeholder="Serach"
+                placeholder="Search"
                 onChange={this.updateSearchInput}
                 isLightModeOn={isLightModeOn}
                 value={searchInput}
